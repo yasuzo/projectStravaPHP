@@ -8,14 +8,14 @@ class Organization{
     private $longitude;
     private $latitude;
 
-    public function __constuct(string $name, Point $point, ?int $id = null){
+    public function __constuct(string $name, Point $point, $id = null){
         $this->name = $name;
         $this->id = $id;
         $this->longitude = $point->longitude();
         $this->latitude = $point->latitude();
     }
 
-    public function id(): ?int{
+    public function id(){
         return $this->id;
     }
 

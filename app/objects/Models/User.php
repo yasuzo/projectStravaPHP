@@ -13,7 +13,7 @@ class User{
     private $tracking_token;
     private $organization_id;
 
-    public function __construct(string $firstName, string $lastName, string $username, string $tracking_id, string $tracking_token, ?int $organization_id = null, ?int $id = null){
+    public function __construct(string $firstName, string $lastName, string $username, string $tracking_id, string $tracking_token, $organization_id = null, $id = null){
         $this->id = $id;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -53,7 +53,7 @@ class User{
         return $this->organization_id;
     }
 
-    public function changeOrganizationId(int $organization_id): void{
+    public function changeOrganizationId($organization_id): void{
         $this->organization_id = $organization_id;
     }
 

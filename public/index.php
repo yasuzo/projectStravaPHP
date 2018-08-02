@@ -33,7 +33,10 @@ use Controllers\{
     PerformAdminLogin,
     ShowAdmins,
     ShowNewAdminForm,
-    Error404Controller
+    Error404Controller,
+    CreateAdmin,
+    DeleteAdmin,
+    PerformLogout
 };
 
 use Http\Responses\HTMLResponse;
@@ -147,6 +150,44 @@ $router->addMatch(
     ],
     [
         'superadmin'
+    ]
+);
+
+$router->addMatch(
+    'POST',
+    'createAdmin',
+    [
+        new CreateAdmin($cookieHandler, $adminRepository, $organizationRepository),
+        'handle'
+    ],
+    [
+        'superadmin'
+    ]
+);
+
+$router->addMatch(
+    'POST',
+    'deleteAdmin',
+    [
+        new DeleteAdmin($adminRepository),
+        'handle'
+    ],
+    [
+        'superadmin'
+    ]
+);
+
+$router->addMatch(
+    'POST',
+    'logout',
+    [
+        new PerformLogout($session),
+        'handle'
+    ],
+    [
+        'superadmin',
+        'admin',
+        'user'
     ]
 );
 

@@ -4,6 +4,7 @@ namespace Services\Repositories;
 
 use Models\Admin;
 use ResourceNotFoundException;
+use DuplicateEntryException;
 
 class AdminRepository extends Repository{
 
@@ -14,11 +15,11 @@ class AdminRepository extends Repository{
     /**
      * Returns admin with id passed as a parameter
      *
-     * @param integer $id
+     * @param $id
      * @throws ResourceNotFoundException
      * @return Admin
      */
-    public function findById(int $id): Admin{
+    public function findById($id): Admin{
         $query = <<<SQL
         select id, username, password, organization_id, type
         from admins
@@ -30,7 +31,7 @@ SQL;
         $admin = $query->fetch();
 
         if($admin === false){
-            throw new ResourceNotFoundException();
+            throw new ResourceNotFoundException("Couldn't find admin with given id!");
         }
 
         return new Admin(
@@ -61,7 +62,7 @@ SQL;
         $admin = $query->fetch();
 
         if($admin === false){
-            throw new ResourceNotFoundException();
+            throw new ResourceNotFoundException('Could not find admin with passed username!');
         }
 
         return new Admin(
@@ -78,10 +79,10 @@ SQL;
      * The admin has to be of type 'admin'.
      * Super admins can't be deleted through application
      * 
-     * @param integer $id
+     * @param $id
      * @return void
      */
-    public function deleteById(int $id): void{
+    public function deleteById($id): void{
         $query = <<<SQL
         delete from admins
         where id=:id and type="admin";
@@ -99,7 +100,7 @@ SQL;
      */
     public function findAdmins(): array{
         $query = <<<SQL
-        select admins.id, admins.password, admins.type, organizations.name organization_name
+        select admins.id, admins.username, admins.password, admins.type, organizations.name organization_name
         from admins 
         left join organizations on admins.organization_id = organizations.id
         where admins.type="admin"
@@ -107,5 +108,32 @@ SQL;
 SQL;
         $query = $this->db->query($query);
         return $query->fetchAll() ?: [];
+    }
+
+    /**
+     * Saves admin to the database
+     *
+     * @param Admin $admin
+     * @throws \DuplicateEntryException if username already exists in the database
+     * @return void
+     */
+    public function persist(Admin $admin): void{
+        try{
+            $this->findByUsername($admin->username());
+            throw new DuplicateEntryException('Admin with given username already exists!');
+        }catch(ResourceNotFoundException $e){
+            $query = <<<SQL
+            insert into admins
+            (username, password, type, organization_id) values
+            (:username, :password, :type, :organization_id);
+SQL;
+            $query = $this->db->prepare($query);
+            $query->execute([
+                ':username' => $admin->username(),
+                ':password' => $admin->password(),
+                ':type' => $admin->authorizationLevel(),
+                ':organization_id' => $admin->organizationId()
+            ]);
+        }
     }
 }

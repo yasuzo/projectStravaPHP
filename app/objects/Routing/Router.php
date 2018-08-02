@@ -62,11 +62,11 @@ class Router{
             if(isset($this->matches[$method]['other'][$controller]) === true){
                 $callable = $this->matches[$method]['other'][$controller];
             }else if(isset($this->matches[$method]['user'][$controller]) === true){
-                $callable = $this->matches[$method]['user'][$controller];
+                $callable = $this->matches[$method]['user']['login'];
             }else if(isset($this->matches[$method]['admin'][$controller]) === true){
-                $callable = $this->matches[$method]['admin'][$controller];
+                $callable = $this->matches[$method]['admin']['adminLoginPage'];
             }else if(isset($this->matches[$method]['superadmin'][$controller]) === true){
-                $callable = $this->matches[$method]['superadmin'][$controller];
+                $callable = $this->matches[$method]['superadmin']['adminLoginPage'];
             }else{
                 $callable = $this->matches[$method][$authorizationLevel]['error404'];
             }

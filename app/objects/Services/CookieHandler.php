@@ -31,7 +31,7 @@ class CookieHandler{
      */
     public function readCookie(string $name): string{
         if(isset($this->cookies[$name]) === false){
-            throw new \OutOfBoundsException();
+            throw new \OutOfBoundsException('Cookie does not exist!');
         }
         return $this->cookies[$name];
     }
@@ -55,7 +55,7 @@ class CookieHandler{
      */
     public function readCookieArray(string $name): array{
         if(isset($this->cookies[$name]) === false){
-            throw new \OutOfBoundsException();
+            throw new \OutOfBoundsException('Cookie does not exist!');
         }
         return \explode('|', $this->cookies[$name]);
     }

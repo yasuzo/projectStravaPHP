@@ -1,7 +1,11 @@
 <navbar>
 
     <ul id="navbarDropdown" class="dropdown-content">
-	    <li><a href="?controller=logout">Odjava</a></li>
+	    <li>
+            <a href="#" onclick="$('#logout_form').submit()">Odjava</a>
+            <form id="logout_form" action="?controller=logout" method="post">
+            </form>
+        </li>
     </ul>
   
     <nav>

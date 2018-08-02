@@ -9,12 +9,16 @@ class Admin {
     private $organization_id;
     private $authorizationLevel;
 
-    public function __construct(string $username, string $password, string $authorizationLevel, ?int $organization_id = null, ?int $id = null){
+    public function __construct(string $username, string $password, string $authorizationLevel, $organization_id = null, $id = null){
         $this->username = $username;
         $this->password = $password;
         $this->authorizationLevel = $authorizationLevel;
         $this->organization_id = $organization_id;
         $this->id = $id;
+    }
+
+    public function organizationId(){
+        return $this->organization_id;
     }
 
     public function username(): string{
@@ -37,7 +41,7 @@ class Admin {
         return $this->authorizationLevel;
     }
 
-    public function id(): int{
+    public function id(){
         return $this->id;
     }
 }

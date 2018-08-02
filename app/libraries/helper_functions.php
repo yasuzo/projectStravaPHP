@@ -45,7 +45,7 @@ function set_empty_string(&...$arr): void{
 
 function process_passed_parameters(&$errors, ...$arr): void{
     if(passed_value_is_array(...$arr)){
-        $errors[] = 'Greska - Poslan je array';
+        $errors[] = 'Tip podatka je neisparavan!';
     }
     if(is_empty(...$arr)){
         $errors[] = 'Neka od polja su prazna!';

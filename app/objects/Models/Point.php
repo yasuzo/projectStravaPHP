@@ -79,13 +79,13 @@ class Point{
      */
     private function sanitizeCoordinate(string &$coordinate): void{
         if(\is_string_number($coordinate) === false){
-            throw new \InvalidArgumentException();
+            throw new \InvalidArgumentException('Coordinate given is not a number!');
         }
         
         $coordinate = round($coordinate, 5);
 
         if($coordinate > 180 || $coordinate < -180){
-            throw new \DomainException();
+            throw new \DomainException('Coordinate is not within the domain!');
         }
     }
 }

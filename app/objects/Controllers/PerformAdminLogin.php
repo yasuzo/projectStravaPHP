@@ -3,7 +3,7 @@
 namespace Controllers;
 
 use Http\Responses\{RedirectResponse, Response};
-use Services\{Templating, Session, CookieHandler};
+use Services\{Session, CookieHandler};
 use Services\Repositories\AdminRepository;
 use Http\Request;
 
@@ -13,7 +13,6 @@ use ResourceNotFoundException;
  * Performs admin login
  */
 class PerformAdminLogin implements Controller{
-    private $templatingEngine;
     private $session;
     private $cookieHandler;
     private $adminRepository;

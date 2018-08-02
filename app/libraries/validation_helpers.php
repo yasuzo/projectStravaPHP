@@ -7,33 +7,33 @@ require_once 'helper_functions.php';
 use Services\UserRepository;
 
 define('MIN_LEN_USER', 1);
-define('MAX_LEN_USER', 24);
+define('MAX_LEN_USER', 40);
 
 
 function validate_name(string $firstName, $lastName, array &$errors){
     $regex = "/^[a-zA-Z\p{L}]{1,25}$/u";
     if((bool)preg_match($regex, $firstName) === false || (bool)preg_match($regex, $lastName) === false){
-        array_push($errors, "Ime i prezime smije sadrzavati samo slova i mora biti dugacko od 1 do 25 slova!");
+        $errors[] = "Ime i prezime smije sadrzavati samo slova i mora biti dugacko od 1 do 25 slova!";
         return false;
     }
     return true;
 }
 
-function validate_username(string $username, array &$errors): bool{
+function validate_username(string $username, &$errors): bool{
     $regex = "/^(?=[\w\-]*[a-zA-Z\p{L}])[\w\-]{".MIN_LEN_USER.",".MAX_LEN_USER."}$/u";
     if((bool)preg_match($regex, $username) === false){
-        array_push($errors, "Korisnicko ime nije valjano!");
+        $errors[] = "Korisnicko ime nije valjano!";
         return false;
     }
     return true;
 }
 
-function validate_passwords(string $pass1, string $pass2, array &$errors): bool{
+function validate_passwords(string $pass1, string $pass2, &$errors): bool{
     if(mb_strlen($pass1) < 12){
-        array_push($errors, "Lozinka nije valjana!");
+        $errors[] = "Lozinka nije valjana!";
         return false;
     }else if($pass1 !== $pass2){
-        array_push($errors, "Lozinke nisu iste!");
+        $errors[] = "Lozinke nisu iste!";
         return false;
     }
     return true;
@@ -41,7 +41,7 @@ function validate_passwords(string $pass1, string $pass2, array &$errors): bool{
 
 function username_taken(string $username, UserRepository $userRepository, array &$errors): bool{
     if($userRepository->findByUsername($username) !== null){
-        array_push($errors, "Korisnicko ime vec postoji!");
+        $errors[] = "Korisnicko ime vec postoji!";
         return true;
     }
     return false;

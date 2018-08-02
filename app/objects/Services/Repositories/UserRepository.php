@@ -15,10 +15,10 @@ class UserRepository extends Repository{
      * Finds user by id
      * 
      * @throws ResourceNotFoundException
-     * @param string $id
+     * @param $id
      * @return User
      */
-    public function findById(string $id): User{
+    public function findById($id): User{
         $query = <<<SQL
         select id, firstName, lastName, username, tracking_id, tracking_token, organization_id
         from users
@@ -28,7 +28,7 @@ SQL;
         $query->execute([':id' => $id]);
 
         if(($user = $query->fetch()) === false){
-            throw new ResourceNotFoundException();
+            throw new ResourceNotFoundException('Could not find user with given id!');
         }
         $user = new User(
             $user['firstName'], 
@@ -68,10 +68,10 @@ SQL;
     /**
      * Deletes a user from the database
      *
-     * @param integer $id
+     * @param $id
      * @return void
      */
-    public function deleteById(int $id): void{
+    public function deleteById($id): void{
         $query = <<<SQL
         delete from users
         where id=:id;
@@ -107,10 +107,10 @@ SQL;
     /**
      * Returns an array of users that are from particular organization
      *
-     * @param integer $organization_id
+     * @param $organization_id
      * @return array
      */
-    public function findAllFromOrganization(int $organization_id): array{
+    public function findAllFromOrganization($organization_id): array{
         $query = <<<SQL
         select users.id, users.firstName, users.lastName, users.username, case when bans.id is not null
             then 1

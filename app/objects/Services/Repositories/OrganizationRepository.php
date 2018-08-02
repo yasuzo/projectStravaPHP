@@ -16,11 +16,11 @@ class OrganizationRepository extends Repository{
     /**
      * Returns an organizations with given id
      *
-     * @param integer $id
+     * @param $id
      * @throws \ResourceNotFoundException
      * @return Organization
      */
-    public function findById(int $id): Organization{
+    public function findById($id): Organization{
         $query = <<<SQL
         select id, name, longitude, latitude
         from organizations
@@ -29,15 +29,16 @@ SQL;
         $query = $this->db->prepare($query);
         $query->execute([':id' => $id]);
 
+
         $organization = $query->fetch();
 
         if($organization === false){
-            throw new ResourceNotFoundException();
+            throw new ResourceNotFoundException('Could not find organization with given id!');
         }
         
         return new Organization(
             $organization['name'],
-            new Point($organization['longitude'], $organization['latitude']),
+            new Point($organization['longitude'] / 100000, $organization['latitude'] / 100000),
             $organization['id']
         );
     } 
@@ -60,10 +61,10 @@ SQL;
     /**
      * Deletes an organization with the given id from database
      *
-     * @param integer $id
+     * @param $id
      * @return void
      */
-    public function deleteById(int $id): void{
+    public function deleteById($id): void{
         $query = <<<SQL
         delete from organizations
         where id=:id;
