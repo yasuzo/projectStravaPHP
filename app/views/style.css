@@ -1,0 +1,92 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.card-image img{
+    max-height: 40vh;
+}
+
+navbar{
+    margin-bottom: 1em;
+}
+
+.activity{
+    border-radius: 0.45em;
+    min-height: 15em;
+}
+
+.activity h5{
+    margin-left: 0.3em;
+    padding-top: 0.3em;
+    color: rgb(65, 65, 64);
+    margin-top: -0.3em;
+    font-weight: bold;
+}
+
+.brand-logo{
+    margin-left: 0.2em;
+}
+
+/* .activity-details-list li{
+    margin-bottom: 1em;
+} */
+
+.activity-card-table{
+    table-layout: fixed;
+}
+
+.activity-card-table td{
+    padding-top: 0;
+    padding-bottom: 0.6em;
+    width: 50%;
+}
+
+.login-card{
+    margin-top: 5em;
+    /* height: 25em; */
+    padding-bottom: 1em;
+    border-radius: 0.45em;
+}
+
+.organization-card{
+    height: 15em; 
+    margin: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 0.45em;
+}
+
+.upute{
+    text-align: left;
+    padding: 1em;
+    margin-top: 2em;
+    
+    border-radius: 0.45em;
+}
+
+#connect-with-strava{
+    margin-top: 0.7em;
+    border-radius: 0.2em;
+    width: 193px;
+    height: 48px;
+    background: url('/art/connect_with_strava.png') no-repeat;
+    display: inline-block;
+    cursor:pointer;
+    border: none;
+}
+
+.admin-login{
+    border-radius: 0.45em;
+}
+
+.admin-user-card{
+    border-radius: 0.45em;
+}
+
+.no-activities-found{
+    border-radius: 0.45em;
+}
