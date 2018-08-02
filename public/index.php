@@ -36,7 +36,11 @@ use Controllers\{
     Error404Controller,
     CreateAdmin,
     DeleteAdmin,
-    PerformLogout
+    PerformLogout,
+    ShowOrganizations,
+    ShowNewOrganizationForm,
+    CreateOrganization,
+    DeleteOrganization
 };
 
 use Http\Responses\HTMLResponse;
@@ -188,6 +192,54 @@ $router->addMatch(
         'superadmin',
         'admin',
         'user'
+    ]
+);
+
+$router->addMatch(
+    'GET',
+    'organizations',
+    [
+        new ShowOrganizations($templatingEngine, $firewall, $organizationRepository),
+        'handle'
+    ],
+    [
+        'superadmin'
+    ]
+);
+
+$router->addMatch(
+    'GET',
+    'createOrganization',
+    [
+        new ShowNewOrganizationForm($templatingEngine, $firewall, $cookieHandler),
+        'handle'
+    ],
+    [
+        'superadmin'
+    ]
+);
+
+$router->addMatch(
+    'POST',
+    'createOrganization',
+    [
+        new CreateOrganization($cookieHandler, $organizationRepository),
+        'handle'
+    ],
+    [
+        'superadmin'
+    ]
+);
+
+$router->addMatch(
+    'POST',
+    'deleteOrganization',
+    [
+        new DeleteOrganization($organizationRepository),
+        'handle'
+    ],
+    [
+        'superadmin'
     ]
 );
 

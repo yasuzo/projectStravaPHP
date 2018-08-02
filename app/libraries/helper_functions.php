@@ -43,7 +43,14 @@ function set_empty_string(&...$arr): void{
     }
 }
 
-function process_passed_parameters(&$errors, ...$arr): void{
+/**
+ * Fills $errors variable if any of other parameters are array or empty string
+ *
+ * @param array|null $errors
+ * @param ...$arr
+ * @return void
+ */
+function process_passed_parameters(?array &$errors, ...$arr): void{
     if(passed_value_is_array(...$arr)){
         $errors[] = 'Tip podatka je neisparavan!';
     }
@@ -53,7 +60,7 @@ function process_passed_parameters(&$errors, ...$arr): void{
 }
 
 function is_string_number(string $string): bool{
-    return (bool)preg_match('/^\d+(?:\.\d+)?$/', $string);
+    return (bool)preg_match('/^-?\d+(?:\.\d+)?$/', $string);
 }
 
 
