@@ -40,7 +40,9 @@ use Controllers\{
     ShowOrganizations,
     ShowNewOrganizationForm,
     CreateOrganization,
-    DeleteOrganization
+    DeleteOrganization,
+    ShowAdminSettings,
+    UpdateAdminSettings
 };
 
 use Http\Responses\HTMLResponse;
@@ -239,6 +241,32 @@ $router->addMatch(
         'handle'
     ],
     [
+        'superadmin'
+    ]
+);
+
+$router->addMatch(
+    'GET',
+    'settings',
+    [
+        new ShowAdminSettings($templatingEngine, $session, $firewall, $cookieHandler, $adminRepository),
+        'handle'
+    ],
+    [
+        'superadmin',
+        'admin'
+    ]
+);
+
+$router->addMatch(
+    'POST',
+    'settings',
+    [
+        new UpdateAdminSettings($session, $cookieHandler, $adminRepository),
+        'handle'
+    ],
+    [
+        'admin',
         'superadmin'
     ]
 );

@@ -23,14 +23,14 @@
             <div class="row">
                 <div class="input-field col l6 s12">
                     <input id="password" name="password1" type="password" class="validate">
-                    <label for="password">Password</label>
+                    <label for="password">Lozinka</label>
                 </div>
             </div>
             <!-- password repeat -->
             <div class="row">
                 <div class="input-field col l6 s12">
                     <input id="password" name="password2" type="password" class="validate">
-                    <label for="password">Password</label>
+                    <label for="password">Ponovite lozinku</label>
                 </div>
             </div>
 

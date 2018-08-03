@@ -43,6 +43,24 @@ SQL;
         );
     }
 
+    public function update(Admin $admin){
+        $query = <<<SQL
+        update admins
+        set username=:username, password=:password, type=:type, organization_id=:organization_id
+        where id=:id;
+SQL;
+        $query = $this->db->prepare($query);
+        $query->execute(
+            [
+                ':username' => $admin->username(), 
+                ':password' => $admin->password(), 
+                ':type' => $admin->authorizationLevel(), 
+                ':organization_id' => $admin->organizationId(),
+                ':id' => $admin->id()
+            ]
+        );
+    }
+
     /**
      * Returns an admin with a username passed to the method
      *
