@@ -13,6 +13,8 @@ use Services\{
     Session
 };
 
+use DuplicateEntryException;
+
 class UpdateAdminSettings implements Controller{
     private $cookieHandler;
     private $adminRepository;
@@ -56,8 +58,13 @@ class UpdateAdminSettings implements Controller{
 
             $admin->changeUsername($username);
 
-            $this->adminRepository->update($admin);
-            $this->cookieHandler->setCookie('messages', 10, 'Postavke su spremljene!');
+            try{
+                $this->adminRepository->update($admin);
+                $this->cookieHandler->setCookie('messages', 10, 'Postavke su spremljene!');
+            }catch(DuplicateEntryException $e){
+                $this->cookieHandler->setCookie('usernameErrors', 10, 'Korisnicko ime je zauzeto!');
+                return new RedirectResponse('?controller=settings');
+            }
         }else{
             $password = $request->post()['password'] ?? '';
             $newPassword1 = $request->post()['newPassword1'] ?? '';

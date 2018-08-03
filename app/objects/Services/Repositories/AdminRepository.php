@@ -43,7 +43,23 @@ SQL;
         );
     }
 
-    public function update(Admin $admin){
+    /**
+     * Updates admin in the database
+     *
+     * @param Admin $admin
+     * 
+     * @throws \DuplicateEntryException
+     * 
+     * @return void
+     */
+    public function update(Admin $admin): void{
+        try{
+            $temp = $this->findByUsername($admin->username());
+            if($admin->id() !== $temp->id()){
+                throw new DuplicateEntryException('Username is already taken by other person!');
+            }
+        }catch(ResourceNotFoundException $e){}
+        
         $query = <<<SQL
         update admins
         set username=:username, password=:password, type=:type, organization_id=:organization_id
