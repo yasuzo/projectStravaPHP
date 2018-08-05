@@ -6,6 +6,7 @@ use Models\Organization;
 use Models\Point;
 
 use ResourceNotFoundException;
+use DuplicateEntryException;
 
 class OrganizationRepository extends Repository{
 
@@ -133,5 +134,37 @@ SQL;
 SQL;
         $query = $this->db->prepare($query);
         $query->execute([':id' => $id]);
+    }
+
+    /**
+     * Updates organization in the database
+     *
+     * @param Organization $organization
+     * @return void
+     */
+    public function update(Organization $organization): void{
+        try{
+            $org = $this->findByName($organization->name());
+            if($org->id() !== $organization->id()){
+                throw new DuplicateEntryException('Organization with given name already exists!');
+            }else{
+                throw new ResourceNotFoundException('Organization name is available!');
+            }
+        }catch(ResourceNotFoundException $e){
+            $query = <<<SQL
+            update organizations
+            set name=:organization_name, longitude=:longitude, latitude=:latitude
+            where id=:id
+SQL;
+            $query = $this->db->prepare($query);
+            $query->execute(
+                [
+                    ':organization_name' => $organization->name(),
+                    ':longitude' => $organization->longitude() * 100000,
+                    ':latitude' => $organization->latitude() * 100000,
+                    ':id' => $organization->id()
+                ]
+            );
+        }
     }
 }

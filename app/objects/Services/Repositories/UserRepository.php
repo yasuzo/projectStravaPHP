@@ -121,7 +121,7 @@ SQL;
         from users
         left join bans on users.organization_id=bans.organization_id
         where users.organization_id=:organization_id
-        order by users.lastName ASC;
+        order by banned ASC, users.lastName ASC;
 SQL;
         $query = $this->db->prepare($query);
         $query->execute([':organization_id' => $organization_id]);

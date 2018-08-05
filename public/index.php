@@ -45,7 +45,9 @@ use Controllers\{
     UpdateAdminSettings,
     ShowUserRankingForOrganization,
     ShowMembers,
-    UserBanningController
+    UserBanningController,
+    ShowOrganizationSettings,
+    UpdateOrganizationSettings
 };
 
 use Http\Responses\HTMLResponse;
@@ -304,6 +306,30 @@ $router->addMatch(
     'changeUserState',
     [
         new UserBanningController($session, $userRepository, $adminRepository),
+        'handle'
+    ],
+    [
+        'admin'
+    ]
+);
+
+$router->addMatch(
+    'GET',
+    'organizationSettings',
+    [
+        new ShowOrganizationSettings($templatingEngine, $session, $firewall, $cookieHandler, $organizationRepository, $adminRepository),
+        'handle'
+    ],
+    [
+        'admin'
+    ]
+);
+
+$router->addMatch(
+    'POST',
+    'organizationSettings',
+    [
+        new UpdateOrganizationSettings($session, $cookieHandler, $organizationRepository, $adminRepository),
         'handle'
     ],
     [

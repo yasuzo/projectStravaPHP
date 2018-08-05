@@ -42,8 +42,12 @@ class UserBanningController implements Controller{
         }
 
         if($allow === 'true'){
-            
+            $this->userRepository->removeBan($user->id(), $admin->organizationId());
+        }else if($allow === 'false'){
+            $this->userRepository->ban($user->id(), $admin->organizationId());
         }
+
+        return new RedirectResponse('?controller=members');
     }
 
 }
