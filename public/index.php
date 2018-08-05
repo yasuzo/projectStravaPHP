@@ -42,7 +42,10 @@ use Controllers\{
     CreateOrganization,
     DeleteOrganization,
     ShowAdminSettings,
-    UpdateAdminSettings
+    UpdateAdminSettings,
+    ShowUserRankingForOrganization,
+    ShowMembers,
+    UserBanningController
 };
 
 use Http\Responses\HTMLResponse;
@@ -271,12 +274,49 @@ $router->addMatch(
     ]
 );
 
+$router->addMatch(
+    'GET',
+    'index',
+    [
+        new ShowUserRankingForOrganization($templatingEngine, $session, $firewall, $userRepository, $adminRepository),
+        'handle'
+    ],
+    [
+        'admin'
+    ]
+);
+
+$router->addMatch(
+    'GET',
+    'members',
+    [
+        new ShowMembers($templatingEngine, $session, $firewall, $userRepository, $adminRepository),
+        'handle'
+    ],
+    [
+        'admin'
+    ]
+);
+
+// for banning/unbanning users
+$router->addMatch(
+    'POST',
+    'changeUserState',
+    [
+        new UserBanningController($session, $userRepository, $adminRepository),
+        'handle'
+    ],
+    [
+        'admin'
+    ]
+);
+
 try{
     $respose = $router->resolve($request);
     $respose->send();
 }catch(Throwable $e){
     http_response_code(500);
-    $response = new HTMLResponse('Ups dogodila se pogreska :( '.$e->getMessage());
+    $response = new HTMLResponse('Ups dogodila se pogreska :( <br>'.$e->getMessage());
     $response->send();
 }
 

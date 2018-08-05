@@ -41,7 +41,7 @@
     <div class="row">
 
         <ul class="collection with-header" style="padding-bottom: 1.5em;">
-            <li class="collection-header"><h5>Promijena lozinke</h5></li>
+            <li class="collection-header"><h5>Promjena lozinke</h5></li>
             
             <li class="collection-item">
 

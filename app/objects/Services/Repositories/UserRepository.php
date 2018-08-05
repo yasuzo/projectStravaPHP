@@ -20,7 +20,7 @@ class UserRepository extends Repository{
      */
     public function findById($id): User{
         $query = <<<SQL
-        select id, firstName, lastName, username, tracking_id, tracking_token, organization_id
+        select id, firstName, lastName, username, tracking_id, tracking_token, organization_id, picture_url
         from users
         where id=:id;
 SQL;
@@ -36,6 +36,7 @@ SQL;
             $user['username'], 
             $user['tracking_id'], 
             $user['tracking_token'],
+            $user['picture_url'],
             $user['organization_id'], 
             $user['id']
         );
@@ -51,8 +52,8 @@ SQL;
     public function persist(User $user): void{
         $query = <<<SQL
         insert into users
-        (firstName, lastName, tracking_id, tracking_token) values
-        (:firstName, :lastName, :tracking_id, :tracking_token);
+        (firstName, lastName, tracking_id, tracking_token, picture_url) values
+        (:firstName, :lastName, :tracking_id, :tracking_token, :picture_url);
 SQL;
         $query = $this->db->prepare($query);
         $query->execute(
@@ -60,7 +61,8 @@ SQL;
                 ':firstName' => $user->firstName(), 
                 ':lastName' => $user->lastName(), 
                 ':tracking_id' => $user->trackingId(), 
-                ':tracking_token' => $user->trackingToken()
+                ':tracking_token' => $user->trackingToken(),
+                ':picture_url' => $user->pictureUrl()
             ]
         );
     }
@@ -112,13 +114,14 @@ SQL;
      */
     public function findAllFromOrganization($organization_id): array{
         $query = <<<SQL
-        select users.id, users.firstName, users.lastName, users.username, case when bans.id is not null
+        select users.id, users.firstName, users.lastName, users.username, users.picture_url, case when bans.id is not null
             then 1
             else 0
         end as banned
         from users
         left join bans on users.organization_id=bans.organization_id
-        where users.organization_id=:organization_id;
+        where users.organization_id=:organization_id
+        order by users.lastName ASC;
 SQL;
         $query = $this->db->prepare($query);
         $query->execute([':organization_id' => $organization_id]);
@@ -126,4 +129,101 @@ SQL;
         return $query->fetchAll() ?: [];
     }
 
+    /**
+     * Returns users with counted activities from organization passed as parameter who are not banned
+     *
+     * @param string $organization_id
+     * @return array
+     */
+    public function findWithCountedActivities(string $organization_id): array{
+        $query = <<<SQL
+        select users.id, users.firstName, users.lastName, users.username, count(activities.id) count
+        from users
+        left join bans on users.organization_id=bans.organization_id
+        left join activities on users.id=activities.user_id
+        where users.organization_id=:organization_id and bans.id is null
+        group by users.id
+        order by count DESC;
+SQL;
+        $query = $this->db->prepare($query);
+        $query->execute([':organization_id' => $organization_id]);
+        
+        return $query->fetchAll() ?: [];
+    }
+
+    /**
+     * Returns users with summed activity distances from organization passed as parameter who are not banned
+     *
+     * @param string $organization_id
+     * @return array
+     */
+    public function findWithActivitiesDistance(string $organization_id): array{
+        $query = <<<SQL
+        select users.id, users.firstName, users.lastName, users.username, sum(activities.distance) distance
+        from users
+        left join bans on users.organization_id=bans.organization_id
+        left join activities on users.id=activities.user_id
+        where users.organization_id=:organization_id and bans.id is null
+        group by users.id
+        order by distance DESC;
+SQL;
+        $query = $this->db->prepare($query);
+        $query->execute([':organization_id' => $organization_id]);
+        
+        return $query->fetchAll() ?: [];
+    }
+
+    /**
+     * Bans user from organization if he wasn't already banned.
+     *
+     * @param string $user_id
+     * @param string $organization_id
+     * @return void
+     */
+    public function ban(string $user_id, string $organization_id): void{
+        $query = <<<SQL
+        select * from bans where user_id=:user_id and organization_id=:organization_id;
+SQL;
+        $query = $this->db->prepare($query);
+        $query->execute([
+            ':user_id' => $user_id,
+            ':organization_id' => $organization_id
+        ]);
+
+        if($query->fetch() === false){
+            return;
+        }
+
+        $query = <<<SQL
+        insert into bans
+        (user_id, organization_id) values
+        (:user_id, :organization_id);
+SQL;
+        $query = $this->db->prepare($query);
+        $query->execute([
+            ':id' => $id,
+            ':organization_id' => $organization_id
+        ]);
+    }
+
+    /**
+     * Removes a ban
+     *
+     * @param string $user_id
+     * @param string $organization_id
+     * @return void
+     */
+    public function removeBan(string $user_id, string $organization_id): void{
+        $query = <<<SQL
+        delete from bans
+        where user_id=:user_id and organization_id=:organization_id;
+SQL;
+        $query = $this->db->prepare($query);
+        $query->execute(
+            [
+                ':user_id' => $user_id,
+                ':organization_id' => $organization_id
+            ]
+        );
+    }
 }

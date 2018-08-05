@@ -11,15 +11,17 @@ class User{
     private $username;
     private $tracking_id;
     private $tracking_token;
+    private $picture_url;
     private $organization_id;
 
-    public function __construct(string $firstName, string $lastName, string $username, string $tracking_id, string $tracking_token, $organization_id = null, $id = null){
+    public function __construct(string $firstName, string $lastName, string $username, string $tracking_id, string $tracking_token, string $picture_url, $organization_id = null, $id = null){
         $this->id = $id;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->username = $username;
         $this->tracking_id = $tracking_id;
         $this->tracking_token = $tracking_token;
+        $this->picture_url = $picture_url;
         $this->organization_id = $organization_id;
     }
 
@@ -71,6 +73,10 @@ class User{
 
     public function changeLastName(string $name): void{
         $this->lastName = $name;
+    }
+
+    public function pictureUrl(): string{
+        return $this->pictureUrl();
     }
 
     public function id(){
