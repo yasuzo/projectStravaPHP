@@ -68,16 +68,16 @@ navbar{
     border-radius: 0.45em;
 }
 
-#connect-with-strava{
+/* #connect-with-strava{
     margin-top: 0.7em;
     border-radius: 0.2em;
     width: 193px;
     height: 48px;
-    background: url('/art/connect_with_strava.png') no-repeat;
+    background: url('./art/connect_with_strava.png') no-repeat;
     display: inline-block;
     cursor:pointer;
     border: none;
-}
+} */
 
 .admin-login{
     border-radius: 0.45em;

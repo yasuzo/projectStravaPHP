@@ -47,7 +47,8 @@ use Controllers\{
     ShowMembers,
     UserBanningController,
     ShowOrganizationSettings,
-    UpdateOrganizationSettings
+    UpdateOrganizationSettings,
+    ShowUserLogin
 };
 
 use Http\Responses\HTMLResponse;
@@ -334,6 +335,18 @@ $router->addMatch(
     ],
     [
         'admin'
+    ]
+);
+
+$router->addMatch(
+    'GET',
+    'login',
+    [
+        new ShowUserLogin($templatingEngine),
+        'handle'
+    ],
+    [
+        'other'
     ]
 );
 
