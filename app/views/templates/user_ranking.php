@@ -2,6 +2,19 @@
 <div class="container">
     <!-- <h3 class="center-align red-text">RANG LISTA</h3> -->
     <h3>Rang lista</h3>
+    <?php if($chosenOrganization === false): ?>
+
+    <p>Trenutno ne postoji niti jedna organizacija!</p>
+
+    <?php else: ?>
+    <!-- Orgaznization picker -->
+    <ul id="organizationPicker" class="dropdown-content">
+        <?php foreach($organizations as $org): ?>
+            <li><a href="?controller=index&organization=<?= safe($org['id']); ?>" class="orange-text truncate"><?= safe($org['name']); ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+    <a class="btn dropdown-button orange" href="#!" data-activates="organizationPicker"><?= safe($chosenOrganization->name()); ?><i class="material-icons right">arrow_drop_down</i></a>
+
     <!-- TABS -->
     <div class="row">
     <div class="col s12">
@@ -30,13 +43,22 @@
                         <td></td>
                     </tr>
                 <?php endif; ?>
+
                 <?php $i = 1; ?>
-                <?php foreach($usersByDistance as $user): ?>
+                <?php foreach($usersByDistance as $usr): ?>
+                <?php if($user->id() === $usr['id']): ?>
+                <tr class="red">
+                    <td><?= $i++; ?></td>
+                    <td><?= safe($usr['username']); ?></td>
+                    <td><?= safe($usr['count']); ?></td>
+                </tr>
+                <?php else: ?>
                 <tr>
                     <td><?= $i++; ?></td>
-                    <td><?= safe($user['username']); ?></td>
-                    <td><?= safe($user['distance']); ?></td>
+                    <td><?= safe($usr['username']); ?></td>
+                    <td><?= safe($usr['count']); ?></td>
                 </tr>
+                <?php endif; ?>
                 <?php endforeach; ?>
             </tbody>
         </table>
@@ -60,17 +82,28 @@
                         <td></td>
                     </tr>
                 <?php endif; ?>
+
                 <?php $i = 1; ?>
-                <?php foreach($usersByCount as $user): ?>
+                <?php foreach($usersByCount as $usr): ?>
+                <?php if($user->id() === $usr['id']): ?>
+                <tr class="red">
+                    <td><?= $i++; ?></td>
+                    <td><?= safe($usr['username']); ?></td>
+                    <td><?= safe($usr['count']); ?></td>
+                </tr>
+                <?php else: ?>
                 <tr>
                     <td><?= $i++; ?></td>
-                    <td><?= safe($user['username']); ?></td>
-                    <td><?= safe($user['count']); ?></td>
+                    <td><?= safe($usr['username']); ?></td>
+                    <td><?= safe($usr['count']); ?></td>
                 </tr>
+                <?php endif; ?>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
 </div>
+
+<?php endif; ?>
 
 </div>

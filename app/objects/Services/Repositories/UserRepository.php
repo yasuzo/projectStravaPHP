@@ -44,6 +44,37 @@ SQL;
     }
 
     /**
+     * Returns a user with passed tracking_id
+     *
+     * @param string $tracking_id
+     * @return User
+     */
+    public function findByTrackingId(string $tracking_id): User{
+        $query = <<<SQL
+        select id, firstName, lastName, username, tracking_id, tracking_token, organization_id, picture_url
+        from users
+        where tracking_id=:tracking_id;
+SQL;
+        $query = $this->db->prepare($query);
+        $query->execute([':tracking_id' => $tracking_id]);
+
+        if(($user = $query->fetch()) === false){
+            throw new ResourceNotFoundException('Could not find user with given id!');
+        }
+        $user = new User(
+            $user['firstName'], 
+            $user['lastName'], 
+            $user['username'], 
+            $user['tracking_id'], 
+            $user['tracking_token'],
+            $user['picture_url'],
+            $user['organization_id'], 
+            $user['id']
+        );
+        return $user;
+    }
+
+    /**
      * Saves a user to the database
      *
      * @param User $user

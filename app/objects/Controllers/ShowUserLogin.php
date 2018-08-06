@@ -2,8 +2,8 @@
 
 namespace Controllers;
 
-use Http\Responses\{HTMLResponse, Response};
-use Services\Templating;
+use Http\Responses\{HTMLResponse, Response, RedirectResponse};
+use Services\{Templating, Session};
 use Http\Request;
 
 /**
@@ -11,13 +11,19 @@ use Http\Request;
  */
 class ShowUserLogin implements Controller{
     private $templatingEngine;
-    private $firewall;
+    private $session;
 
-    public function __construct(Templating $engine){
+    public function __construct(Templating $engine, Session $session){
         $this->templatingEngine = $engine;
+        $this->session = $session;
     }
 
     public function handle(Request $request): Response{
+
+        if($this->session->isAuthenticated()){
+            return new RedirectResponse('?controller=index');
+        }
+
         $content = $this->templatingEngine->render(
             'layouts/layout_login.php', 
             [ 

@@ -2,6 +2,7 @@
 
 define('ROOT', __DIR__.'/..');
 
+define('STRAVA_CONF', ROOT . '/app/strava_config.php');
 
 // AUTOLOAD
 require_once ROOT.'/app/autoload.php';
@@ -48,7 +49,9 @@ use Controllers\{
     UserBanningController,
     ShowOrganizationSettings,
     UpdateOrganizationSettings,
-    ShowUserLogin
+    ShowUserLogin,
+    StravaAuth,
+    ShowUserIndex
 };
 
 use Http\Responses\HTMLResponse;
@@ -342,7 +345,34 @@ $router->addMatch(
     'GET',
     'login',
     [
-        new ShowUserLogin($templatingEngine),
+        new ShowUserLogin($templatingEngine, $session),
+        'handle'
+    ],
+    [
+        'other',
+        'user'
+    ]
+);
+
+$stravaAuthController = new StravaAuth(STRAVA_CONF, $session, $userRepository);
+
+// $router->addMatch(
+//     'GET',
+//     'requestStravaAuth',
+//     [
+//         $stravaAuthController,
+//         'requestAuthorization'
+//     ],
+//     [
+//         'other'
+//     ]
+// );
+
+$router->addMatch(
+    'GET',
+    'performStravaAuth',
+    [
+        $stravaAuthController,
         'handle'
     ],
     [
@@ -350,12 +380,27 @@ $router->addMatch(
     ]
 );
 
-try{
-    $respose = $router->resolve($request);
-    $respose->send();
-}catch(Throwable $e){
-    http_response_code(500);
-    $response = new HTMLResponse('Ups dogodila se pogreska :( <br>'.$e->getMessage());
-    $response->send();
-}
+$router->addMatch(
+    'GET',
+    'index',
+    [
+        new ShowUserIndex($templatingEngine, $session, $firewall, $userRepository, $organizationRepository),
+        'handle'
+    ],
+    [
+        'user'
+    ]
+);
+
+$respose = $router->resolve($request);
+$respose->send();
+
+// try{
+//     $respose = $router->resolve($request);
+//     $respose->send();
+// }catch(Throwable $e){
+//     http_response_code(500);
+//     $response = new HTMLResponse('Ups dogodila se pogreska :( <br>'.$e->getMessage());
+//     $response->send();
+// }
 

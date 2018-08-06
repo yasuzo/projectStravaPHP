@@ -14,7 +14,7 @@ class User{
     private $picture_url;
     private $organization_id;
 
-    public function __construct(string $firstName, string $lastName, string $username, string $tracking_id, string $tracking_token, string $picture_url, $organization_id = null, $id = null){
+    public function __construct(string $firstName, string $lastName, $tracking_id, $tracking_token, string $picture_url,  ?string $username = null, $organization_id = null, $id = null){
         $this->id = $id;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -28,18 +28,18 @@ class User{
     /**
      * Returns user's id of application the user has signed with
      *
-     * @return string 
+     * @return $tracking_id 
      */
-    public function trackingId(): string{
+    public function trackingId(){
         return $this->tracking_id;
     }
 
     /**
      * Returns user's token provided by the application the user has signed with
      *
-     * @return string
+     * @return $tracking_token
      */
-    public function trackingToken(): string{
+    public function trackingToken(){
         return $this->tracking_token;
     }
 
@@ -51,7 +51,7 @@ class User{
         $this->username = $username;
     }
 
-    public function organizationId(): string{
+    public function organizationId(){
         return $this->organization_id;
     }
 
@@ -75,8 +75,8 @@ class User{
         $this->lastName = $name;
     }
 
-    public function pictureUrl(): string{
-        return $this->pictureUrl();
+    public function pictureUrl(){
+        return $this->picture_url;
     }
 
     public function id(){
