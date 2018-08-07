@@ -25,7 +25,8 @@ use Routing\Router;
 use Services\Repositories\{
     UserRepository,
     AdminRepository,
-    OrganizationRepository
+    OrganizationRepository,
+    ActivityRepository
 };
 
 use Controllers\{
@@ -51,7 +52,8 @@ use Controllers\{
     UpdateOrganizationSettings,
     ShowUserLogin,
     StravaAuth,
-    ShowUserIndex
+    ShowUserIndex,
+    ShowUserProfile
 };
 
 use Http\Responses\HTMLResponse;
@@ -60,6 +62,7 @@ use Http\Request;
 $userRepository = new UserRepository($db);
 $adminRepository = new AdminRepository($db);
 $organizationRepository = new OrganizationRepository($db);
+$activityRepository = new ActivityRepository($db);
 
 $templatingEngine = new Templating(ROOT.'/app/views/');
 
@@ -385,6 +388,19 @@ $router->addMatch(
     'index',
     [
         new ShowUserIndex($templatingEngine, $session, $firewall, $userRepository, $organizationRepository),
+        'handle'
+    ],
+    [
+        'user'
+    ]
+);
+
+
+$router->addMatch(
+    'GET',
+    'profile',
+    [
+        new ShowUserProfile($templatingEngine, $session, $firewall, $activityRepository),
         'handle'
     ],
     [

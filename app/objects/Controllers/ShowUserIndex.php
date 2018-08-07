@@ -32,6 +32,10 @@ class ShowUserIndex implements Controller{
 
         $chosenOrganization_id = $request->get()['organization'] ?? $user->organizationId() ?? false;
 
+        if(is_array($chosenOrganization_id) === true){
+            return new RedirectResponse('?controller=index');
+        }
+
         if($chosenOrganization_id === false && empty($organizations) === false){
             $chosenOrganization = $this->organizationRepository->findById($organizations[0]['id']);
         }
