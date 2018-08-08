@@ -47,16 +47,16 @@
                 <?php $i = 1; ?>
                 <?php foreach($usersByDistance as $usr): ?>
                 <?php if($user->id() === $usr['id']): ?>
-                <tr class="red">
+                <tr class="red lighten-3">
                     <td><?= $i++; ?></td>
                     <td><?= safe($usr['username']); ?></td>
-                    <td><?= safe($usr['count']); ?></td>
+                    <td><?= safe($usr['distance']); ?></td>
                 </tr>
                 <?php else: ?>
                 <tr>
                     <td><?= $i++; ?></td>
                     <td><?= safe($usr['username']); ?></td>
-                    <td><?= safe($usr['count']); ?></td>
+                    <td><?= safe($usr['distance']); ?></td>
                 </tr>
                 <?php endif; ?>
                 <?php endforeach; ?>
@@ -86,7 +86,7 @@
                 <?php $i = 1; ?>
                 <?php foreach($usersByCount as $usr): ?>
                 <?php if($user->id() === $usr['id']): ?>
-                <tr class="red">
+                <tr class="red lighten-3">
                     <td><?= $i++; ?></td>
                     <td><?= safe($usr['username']); ?></td>
                     <td><?= safe($usr['count']); ?></td>

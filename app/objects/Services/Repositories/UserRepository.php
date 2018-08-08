@@ -4,6 +4,7 @@ namespace Services\Repositories;
 
 use Models\User;
 use ResourceNotFoundException;
+use DuplicateEntryException;
 
 class UserRepository extends Repository{
     
@@ -32,11 +33,43 @@ SQL;
         }
         $user = new User(
             $user['firstName'], 
-            $user['lastName'], 
-            $user['username'], 
+            $user['lastName'],
             $user['tracking_id'], 
             $user['tracking_token'],
-            $user['picture_url'],
+            $user['picture_url'], 
+            $user['username'], 
+            $user['organization_id'], 
+            $user['id']
+        );
+        return $user;
+    }
+
+    /**
+     * Returns a user with given username
+     *
+     * @param string|null $username
+     * @throws ResourceNotFoundException
+     * @return User
+     */
+    public function findByUsername(?string $username): User{
+        $query = <<<SQL
+        select id, firstName, lastName, username, tracking_id, tracking_token, organization_id, picture_url
+        from users
+        where username=:username;
+SQL;
+        $query = $this->db->prepare($query);
+        $query->execute([':username' => $username]);
+
+        if(($user = $query->fetch()) === false){
+            throw new ResourceNotFoundException('Could not find user with given username!');
+        }
+        $user = new User(
+            $user['firstName'], 
+            $user['lastName'],
+            $user['tracking_id'], 
+            $user['tracking_token'],
+            $user['picture_url'], 
+            $user['username'], 
             $user['organization_id'], 
             $user['id']
         );
@@ -117,24 +150,34 @@ SQL;
      * Updates user's data in the database
      *
      * @param User $user
+     * @throws DuplicateEntryException
      * @return void
      */
-    public function updateUser(User $user){
-        $query = <<<SQL
-        update users
-        set firstName=:firstName, lastName=:lastName, username=:username, oganization_id=:organization_id
-        where id=:id;
+    public function update(User $user){
+        try{
+            $tempUser = $this->findByUsername($user->username());
+            if($user->id() !== $tempUser->id()){
+                throw new DuplicateEntryException("Username is already taken!");
+            }else{
+                throw new ResourceNotFoundException('Username is available!');
+            }
+        }catch(ResourceNotFoundException $e){
+            $query = <<<SQL
+            update users
+            set firstName=:firstName, lastName=:lastName, username=:username, organization_id=:organization_id
+            where id=:id;
 SQL;
-        $query = $this->db->prepare($query);
-        $query->execute(
-            [
-                ':firstName' => $user->firstName(), 
-                ':lastName' => $user->lastName(), 
-                ':username' => $user->username(), 
-                ':organization_id' => $user->organizationId(),
-                ':id' => $user->id()
-            ]
-        );
+            $query = $this->db->prepare($query);
+            $query->execute(
+                [
+                    ':firstName' => $user->firstName(), 
+                    ':lastName' => $user->lastName(), 
+                    ':username' => $user->username(), 
+                    ':organization_id' => $user->organizationId(),
+                    ':id' => $user->id()
+                ]
+            );
+        }
     }
 
     /**
@@ -190,7 +233,7 @@ SQL;
      */
     public function findWithActivitiesDistance(string $organization_id): array{
         $query = <<<SQL
-        select users.id, users.firstName, users.lastName, users.username, sum(activities.distance) distance
+        select users.id, users.firstName, users.lastName, users.username, coalesce(sum(activities.distance), 0) distance
         from users
         left join bans on users.organization_id=bans.organization_id
         left join activities on users.id=activities.user_id

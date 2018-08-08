@@ -9,6 +9,9 @@ use Services\{Templating, Session, Firewall};
 
 use Services\Repositories\ActivityRepository;
 
+/**
+ * Used to list all logged user's activities
+ */
 class ShowUserProfile implements Controller{
     private $templatingEngine;
     private $session;

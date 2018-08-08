@@ -53,7 +53,9 @@ use Controllers\{
     ShowUserLogin,
     StravaAuth,
     ShowUserIndex,
-    ShowUserProfile
+    ShowUserProfile,
+    ShowUserSettings,
+    UpdateUserSettings
 };
 
 use Http\Responses\HTMLResponse;
@@ -401,6 +403,30 @@ $router->addMatch(
     'profile',
     [
         new ShowUserProfile($templatingEngine, $session, $firewall, $activityRepository),
+        'handle'
+    ],
+    [
+        'user'
+    ]
+);
+
+$router->addMatch(
+    'GET',
+    'userSettings',
+    [
+        new ShowUserSettings($templatingEngine, $session, $firewall, $cookieHandler, $userRepository, $organizationRepository),
+        'handle'
+    ],
+    [
+        'user'
+    ]
+);
+
+$router->addMatch(
+    'POST',
+    'userSettings',
+    [
+        new UpdateUserSettings($session, $cookieHandler, $userRepository, $organizationRepository),
         'handle'
     ],
     [

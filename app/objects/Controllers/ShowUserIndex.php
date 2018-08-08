@@ -10,6 +10,9 @@ use Http\Request;
 
 use ResourceNotFoundException;
 
+/**
+ * Used to show ranking of organizations to a user
+ */
 class ShowUserIndex implements Controller{
     private $templatingEngine;
     private $firewall;
@@ -36,21 +39,25 @@ class ShowUserIndex implements Controller{
             return new RedirectResponse('?controller=index');
         }
 
-        if($chosenOrganization_id === false && empty($organizations) === false){
-            $chosenOrganization = $this->organizationRepository->findById($organizations[0]['id']);
-        }
-        
-        if($chosenOrganization_id !== false){
-            try{
-                $chosenOrganization = $this->organizationRepository->findById($chosenOrganization_id);
-
-                $usersByCount = $this->userRepository->findWithCountedActivities($chosenOrganization->id());
-                $usersByDistance = $this->userRepository->findWithActivitiesDistance($chosenOrganization->id());
-            }catch(ResourceNotFoundException $e){
-                return new RedirectResponse('?controller=index');
+        if(empty($organizations) === true){
+            $chosenOrganization = false;
+        }else{
+            if($chosenOrganization_id === false){
+                $chosenOrganization = $this->organizationRepository->findById($organizations[0]['id']);
             }
             
+            if($chosenOrganization_id !== false){
+                try{
+                    $chosenOrganization = $this->organizationRepository->findById($chosenOrganization_id);
+    
+                    $usersByCount = $this->userRepository->findWithCountedActivities($chosenOrganization->id());
+                    $usersByDistance = $this->userRepository->findWithActivitiesDistance($chosenOrganization->id());
+                }catch(ResourceNotFoundException $e){
+                    return new RedirectResponse('?controller=index');
+                }
+            }
         }
+        
 
         $content = $this->templatingEngine->render(
             'layouts/layout_main.php', 

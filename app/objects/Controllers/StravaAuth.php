@@ -32,7 +32,7 @@ class StravaAuth{
         $error = $get['error'] ?? '';
         $code = $get['code'] ?? '';
 
-        if($error === 'access_denied' || is_array($code) === true || $code === ''){
+        if($error === 'access_denied' || is_array($code) === true){
             return new RedirectResponse('?controller=login');
         }
 
@@ -52,6 +52,11 @@ class StravaAuth{
         );
 
         $response = json_decode(curl_exec($curl), true);
+
+        if(isset($response['errors']) === true){
+            return new RedirectResponse('?controller=error404');
+        }
+
         curl_close($curl);
 
         $newUser = new User(

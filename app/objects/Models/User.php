@@ -43,7 +43,7 @@ class User{
         return $this->tracking_token;
     }
 
-    public function username(): string{
+    public function username(): ?string{
         return $this->username;
     }
 
@@ -59,7 +59,7 @@ class User{
         $this->organization_id = $organization_id;
     }
 
-    public function firstName(): string{
+    public function firstName(): ?string{
         return $this->firstName;
     }
 
@@ -67,7 +67,7 @@ class User{
         $this->firstName = $name;
     }
 
-    public function lastName(): string{
+    public function lastName(): ?string{
         return $this->lastName;
     }
 
@@ -75,7 +75,7 @@ class User{
         $this->lastName = $name;
     }
 
-    public function pictureUrl(){
+    public function pictureUrl(): ?string{
         return $this->picture_url;
     }
 

@@ -27,7 +27,8 @@
                 <li><a href="?controller=organizations">Organizacije</a></li>
                 <li><a href="?controller=settings"><i class="material-icons">settings</i></a></li>
                 <li><div class="divider"></div></li>
-                <li><a href="?controller=logout">Odjava</a></li>
+                <li><a href="#" onclick="$('#logout_form').submit()">Odjava</a></li>
+                <form id="logout_form" action="?controller=logout" method="post"></form>
             </ul>
         
         </div>
