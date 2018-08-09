@@ -18,7 +18,7 @@ class UserBanningController implements Controller{
     public function __construct(Session $session, UserRepository $userRepository, AdminRepository $adminRepository){
         $this->session = $session;
         $this->userRepository = $userRepository;
-        $this->adminRespository = $adminRepository;
+        $this->adminRepository = $adminRepository;
     }
 
     public function handle(Request $request): Response{

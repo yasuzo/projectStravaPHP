@@ -37,7 +37,7 @@
                             <option value="" disabled selected>Odaberite organizaciju</option>
                         <?php endif; ?>
                         <?php foreach($organizations as $org): ?>
-                            <?php if($chosenOrganization !== false && $chosenOrganization->id() !== $org['id']): ?>
+                            <?php if($chosenOrganization === false || $chosenOrganization->id() !== $org['id']): ?>
                                 <option value="<?= $org['id']; ?>"><?= safe($org['name']); ?></option>
                             <?php endif; ?>
                         <?php endforeach; ?>

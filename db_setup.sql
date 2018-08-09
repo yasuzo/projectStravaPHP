@@ -10,7 +10,7 @@ CREATE TABLE users(
     lastName    varchar(25) not null,
     username    varchar(40) unique,
     picture_url varchar(500),
-    tracking_id varchar(256) not null,
+    tracking_id int unique not null,
     tracking_token varchar(256) not null,
     organization_id int
 );
@@ -25,6 +25,7 @@ CREATE TABLE activities(
     longitude   int not null,
     started_at  timestamp not null,
     ended_at    timestamp not null,
+    tracking_id int unique not null,
     user_id     int not null,
     FOREIGN key (user_id)
         REFERENCES users (id)
@@ -52,7 +53,7 @@ CREATE TABLE admins(
 );
 
 CREATE TABLE bans(
-    id      int not null,
+    id      int AUTO_INCREMENT primary key,
     user_id int not null,
     organization_id     int not null,
     FOREIGN key (user_id)
@@ -71,3 +72,4 @@ FOREIGN KEY (organization_id)
 REFERENCES organizations (id)
 ON DELETE SET null
 ON UPDATE RESTRICT;
+

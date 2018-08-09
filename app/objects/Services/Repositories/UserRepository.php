@@ -264,7 +264,7 @@ SQL;
             ':organization_id' => $organization_id
         ]);
 
-        if($query->fetch() === false){
+        if($query->fetch() !== false){
             return;
         }
 
@@ -275,7 +275,7 @@ SQL;
 SQL;
         $query = $this->db->prepare($query);
         $query->execute([
-            ':id' => $id,
+            ':user_id' => $user_id,
             ':organization_id' => $organization_id
         ]);
     }

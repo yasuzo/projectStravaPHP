@@ -56,7 +56,7 @@ SQL;
      */
     public function findByName(string $name): Organization{
         $query = <<<SQL
-        select * from organizations
+        select id, name, longitude/100000 longitude, latitude/100000 latitude from organizations
         where name=:name;
 SQL;
         $query = $this->db->prepare($query);
@@ -70,7 +70,7 @@ SQL;
 
         return new Organization(
             $organization['name'],
-            new Point($organization['longitude'] / 100000, $organization['latitude'] / 100000),
+            new Point($organization['longitude'], $organization['latitude']),
             $organization['id']
         );
         
@@ -85,7 +85,7 @@ SQL;
      */
     public function findById($id): Organization{
         $query = <<<SQL
-        select id, name, longitude, latitude
+        select id, name, longitude/100000 longitude, latitude/100000 latitude
         from organizations
         where id=:id;
 SQL;
@@ -101,7 +101,7 @@ SQL;
         
         return new Organization(
             $organization['name'],
-            new Point($organization['longitude'] / 100000, $organization['latitude'] / 100000),
+            new Point($organization['longitude'], $organization['latitude']),
             $organization['id']
         );
     } 
@@ -113,7 +113,7 @@ SQL;
      */
     public function findAll(): array{
         $query = <<<SQL
-        select *
+        select id, name, longitude/100000 longitude, latitude/100000 latitude 
         from organizations
         order by name;
 SQL;
