@@ -43,6 +43,10 @@ class User{
         return $this->tracking_token;
     }
 
+    public function changeTrackingToken($newToken): void{
+        $this->tracking_token = $newToken;
+    }
+
     public function username(): ?string{
         return $this->username;
     }

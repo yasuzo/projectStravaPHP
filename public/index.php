@@ -2,7 +2,8 @@
 
 define('ROOT', __DIR__.'/..');
 
-define('STRAVA_CONF', ROOT . '/app/strava_config.php');
+// strava conf
+require_once ROOT.'/app/strava_config.php';
 
 // AUTOLOAD
 require_once ROOT.'/app/autoload.php';
@@ -12,6 +13,7 @@ require_once ROOT.'/app/baza.php';
 
 require_once ROOT."/app/libraries/helper_functions.php";
 require_once ROOT."/app/libraries/validation_helpers.php";
+
 
 use Services\{
     Session, 
@@ -56,7 +58,8 @@ use Controllers\{
     ShowUserProfile,
     ShowUserSettings,
     UpdateUserSettings,
-    StravaWebhookSubscription
+    StravaWebhookSubscription,
+    StravaWebhook
 };
 
 use Http\Responses\HTMLResponse;
@@ -360,7 +363,7 @@ $router->addMatch(
     ]
 );
 
-$stravaAuthController = new StravaAuth(STRAVA_CONF, $session, $userRepository);
+$stravaAuthController = new StravaAuth($session, $userRepository);
 
 // $router->addMatch(
 //     'GET',
@@ -440,6 +443,18 @@ $router->addMatch(
     'stravaWebhook',
     [
         new StravaWebhookSubscription(),
+        'handle'
+    ],
+    [
+        'other'
+    ]
+);
+
+$router->addMatch(
+    'POST',
+    'stravaWebhook',
+    [
+        new StravaWebhook($userRepository, $activityRepository),
         'handle'
     ],
     [

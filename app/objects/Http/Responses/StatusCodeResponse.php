@@ -2,7 +2,7 @@
 
 namespace Http\Responses;
 
-class StatusCodeResponse{
+class StatusCodeResponse implements Response{
     private $code;
 
     public function __construct(int $code){

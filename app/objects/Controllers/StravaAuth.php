@@ -14,18 +14,15 @@ use Services\Session;
 use ResourceNotFoundException;
 
 class StravaAuth{
-    private $configPath;
     private $userRepository;
     private $session;
 
-    public function __construct(string $configPath, Session $session, UserRepository $userRepository){
-        $this->configPath = $configPath;
+    public function __construct(Session $session, UserRepository $userRepository){
         $this->userRepository = $userRepository;
         $this->session = $session;
     }
 
     public function handle(Request $request): Response{
-        require_once $this->configPath;
 
         $get = $request->get();
         
@@ -69,6 +66,10 @@ class StravaAuth{
 
         try{
             $user = $this->userRepository->findByTrackingId($newUser->trackingId());
+
+            $user->changeTrackingToken($response['access_token']);
+
+            $this->userRepository->update($user);
         }catch(ResourceNotFoundException $e){
             $this->userRepository->persist($newUser);
             $user = $this->userRepository->findByTrackingId($newUser->trackingId());

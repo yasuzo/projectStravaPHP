@@ -33,6 +33,10 @@ class Request{
         return $this->post;
     }
 
+    public function raw(): string{
+        return file_get_contents('php://input');
+    }
+
     public function files(): array{
         return $this->files;
     }

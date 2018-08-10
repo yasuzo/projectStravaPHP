@@ -97,10 +97,10 @@ SQL;
         $user = new User(
             $user['firstName'], 
             $user['lastName'], 
-            $user['username'], 
             $user['tracking_id'], 
             $user['tracking_token'],
             $user['picture_url'],
+            $user['username'], 
             $user['organization_id'], 
             $user['id']
         );
@@ -164,7 +164,7 @@ SQL;
         }catch(ResourceNotFoundException $e){
             $query = <<<SQL
             update users
-            set firstName=:firstName, lastName=:lastName, username=:username, organization_id=:organization_id
+            set firstName=:firstName, lastName=:lastName, username=:username, organization_id=:organization_id, tracking_token=:tracking_token
             where id=:id;
 SQL;
             $query = $this->db->prepare($query);
@@ -174,6 +174,7 @@ SQL;
                     ':lastName' => $user->lastName(), 
                     ':username' => $user->username(), 
                     ':organization_id' => $user->organizationId(),
+                    ':tracking_token' => $user->trackingToken(),
                     ':id' => $user->id()
                 ]
             );
