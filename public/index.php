@@ -55,7 +55,8 @@ use Controllers\{
     ShowUserIndex,
     ShowUserProfile,
     ShowUserSettings,
-    UpdateUserSettings
+    UpdateUserSettings,
+    StravaWebhookSubscription
 };
 
 use Http\Responses\HTMLResponse;
@@ -431,6 +432,18 @@ $router->addMatch(
     ],
     [
         'user'
+    ]
+);
+
+$router->addMatch(
+    'GET',
+    'stravaWebhook',
+    [
+        new StravaWebhookSubscription(),
+        'handle'
+    ],
+    [
+        'other'
     ]
 );
 
