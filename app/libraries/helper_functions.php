@@ -9,7 +9,7 @@ function safe(string $str): string {
 }
 
 // provjerava je li bilo koji od argumenata prazan
-function is_empty(string ...$arr): bool {
+function is_empty(...$arr): bool {
     foreach($arr as $val){
         if (empty($val))
             return true;

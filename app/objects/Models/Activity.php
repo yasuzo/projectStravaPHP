@@ -16,9 +16,10 @@ class Activity{
     private $ended_at;
     private $tracking_id;
     private $user_id;
+    private $organization_id;
 
-    public function __construct(string $type, int $distance, int $duration, string $polyline, Point $point, int $started_at, int $ended_at, int $tracking_id, int $user_id, ?int $id){
-        $this->id = id();
+    public function __construct(string $type, int $distance, int $duration, string $polyline, Point $point, int $started_at, int $ended_at, int $tracking_id, int $user_id, ?int $organization_id, ?int $id = null){
+        $this->id = $id;
         $this->type = $type;
         $this->distance = $distance;
         $this->duration = $duration;
@@ -29,10 +30,15 @@ class Activity{
         $this->ended_at = $ended_at;
         $this->tracking_id = $tracking_id;
         $this->user_id = $user_id;
+        $this->organization_id = $organization_id;
     }
 
     public function id(): ?int{
         return $this->id;
+    }
+
+    public function organizationId(): ?int{
+        return $this->organization_id;
     }
 
     public function type(): string{

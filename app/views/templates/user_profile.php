@@ -15,8 +15,8 @@
 
         <?php foreach($activities as $activity): ?>
         <div class="container z-depth-4 blue-grey lighten-5 activity" style="margin-top: 1em;">
-            <small>&nbsp;<?= date('d.m.Y', $activity['ended_at']); ?> @</small>
-            <h5><?= date('H:i', $activity['ended_at']); ?>h</h5>
+            <small>&nbsp;<?= date('d.m.Y', strtotime($activity['ended_at'])); ?> @</small>
+            <h5><?= date('H:i', strtotime($activity['ended_at'])); ?>h</h5>
             <hr>
             <div class="row">
                 <div class="col s12" style="margin-top: -0.5em">
@@ -29,7 +29,7 @@
                     <table class="activity-card-table">
                         <tr>
                             <td>Trajanje:<br><strong><b><?= (new DateInterval('PT' . $activity['duration'] . 'S'))->format('%h:%i:%s'); ?></b></strong></td>
-                            <td style="border-left: 1px solid rgba(121, 121, 121, 0.789);">Prijeđena udaljenost:<br><strong><b><?= safe($activity['distance'] / 100); ?>&nbsp;km</b></strong></td>
+                            <td style="border-left: 1px solid rgba(121, 121, 121, 0.789);">Prijeđena udaljenost:<br><strong><b><?= safe($activity['distance'] / 1000); ?>&nbsp;km</b></strong></td>
                         </tr>
                     </table>
                 </div>

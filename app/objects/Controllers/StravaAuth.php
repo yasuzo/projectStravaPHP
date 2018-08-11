@@ -50,6 +50,11 @@ class StravaAuth{
 
         $response = json_decode(curl_exec($curl), true);
 
+        // TODO: add error message
+        if($response === null){
+            return new RedirectResponse('?controller=login');
+        }
+
         if(isset($response['errors']) === true){
             return new RedirectResponse('?controller=error404');
         }

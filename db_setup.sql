@@ -73,3 +73,19 @@ REFERENCES organizations (id)
 ON DELETE SET null
 ON UPDATE RESTRICT;
 
+CREATE TABLE webhook_events(
+    id      int AUTO_INCREMENT primary key,
+    data    TEXT not null
+);
+
+ALTER TABLE `activities` CHANGE `ended_at` `ended_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+ALTER TABLE activities
+ADD organization_id int;
+
+ALTER TABLE activities
+ADD CONSTRAINT connection_activity_organization
+FOREIGN KEY (organization_id)
+REFERENCES organizations (id)
+ON DELETE SET null
+ON UPDATE RESTRICT;

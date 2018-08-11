@@ -28,7 +28,8 @@ use Services\Repositories\{
     UserRepository,
     AdminRepository,
     OrganizationRepository,
-    ActivityRepository
+    ActivityRepository,
+    WebhookEventRepository
 };
 
 use Controllers\{
@@ -69,6 +70,7 @@ $userRepository = new UserRepository($db);
 $adminRepository = new AdminRepository($db);
 $organizationRepository = new OrganizationRepository($db);
 $activityRepository = new ActivityRepository($db);
+$webhookEventRepository = new WebhookEventRepository($db);
 
 $templatingEngine = new Templating(ROOT.'/app/views/');
 
@@ -454,7 +456,7 @@ $router->addMatch(
     'POST',
     'stravaWebhook',
     [
-        new StravaWebhook($userRepository, $activityRepository),
+        new StravaWebhook($webhookEventRepository),
         'handle'
     ],
     [

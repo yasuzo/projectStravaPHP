@@ -61,6 +61,7 @@ SQL;
             $activity['ended_at'],
             $activity['tracking_id'],
             $activity['user_id'],
+            $activity['organization_id'],
             $activity['id']
         );
     }
@@ -79,11 +80,11 @@ SQL;
         }catch(ResourceNotFoundException $e){
             $query = <<<SQL
             insert into activities
-            (type, distance, duration, polyline, latitude, longitude, started_at, ended_at, tracking_id, user_id) 
+            (type, distance, duration, polyline, latitude, longitude, started_at, ended_at, tracking_id, user_id, organization_id) 
             values
-            (:type, :distance, :duration, :polyline, :latitude, :longitude, :started_at, :ended_at, :tracking_id, :user_id);
+            (:type, :distance, :duration, :polyline, :latitude, :longitude, FROM_UNIXTIME(:started_at), FROM_UNIXTIME(:ended_at), :tracking_id, :user_id, :organization_id);
 SQL;
-            $query = $this->db->pepare($query);
+            $query = $this->db->prepare($query);
             $query->execute(
                 [
                     ':type' => $activity->type(),
@@ -96,6 +97,7 @@ SQL;
                     ':ended_at' => $activity->endedAt(),
                     ':tracking_id' => $activity->trackingId(),
                     ':user_id' => $activity->userId(),
+                    ':organization_id' => $activity->organizationId()
                 ]
             );
         }

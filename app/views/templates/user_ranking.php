@@ -50,13 +50,13 @@
                 <tr class="red lighten-3">
                     <td><?= $i++; ?></td>
                     <td><?= safe($usr['username']); ?></td>
-                    <td><?= safe($usr['distance']); ?></td>
+                    <td><?= safe($usr['distance'] /1000); ?></td>
                 </tr>
                 <?php else: ?>
                 <tr>
                     <td><?= $i++; ?></td>
                     <td><?= safe($usr['username']); ?></td>
-                    <td><?= safe($usr['distance']); ?></td>
+                    <td><?= safe($usr['distance'] / 1000); ?></td>
                 </tr>
                 <?php endif; ?>
                 <?php endforeach; ?>

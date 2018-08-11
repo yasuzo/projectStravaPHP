@@ -35,7 +35,7 @@
                 <tr>
                     <td><?= $i++; ?></td>
                     <td><?= safe($user['username']); ?></td>
-                    <td><?= safe($user['distance']); ?></td>
+                    <td><?= safe($user['distance'] / 1000); ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
