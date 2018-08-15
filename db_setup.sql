@@ -89,3 +89,11 @@ FOREIGN KEY (organization_id)
 REFERENCES organizations (id)
 ON DELETE SET null
 ON UPDATE RESTRICT;
+
+CREATE TABLE sessions(
+    session_id          varchar(32) primary key,
+    user_id             int,
+    type                varchar(30),
+    session_data        text not null,
+    last_access_time    timestamp not null DEFAULT CURRENT_TIMESTAMP
+);

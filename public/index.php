@@ -19,7 +19,8 @@ use Services\{
     Session, 
     Templating,
     Firewall,
-    CookieHandler
+    CookieHandler,
+    CustomSessionHandler
 };
 
 use Routing\Router;
@@ -29,7 +30,8 @@ use Services\Repositories\{
     AdminRepository,
     OrganizationRepository,
     ActivityRepository,
-    WebhookEventRepository
+    WebhookEventRepository,
+    SessionRepository
 };
 
 use Controllers\{
@@ -71,10 +73,16 @@ $adminRepository = new AdminRepository($db);
 $organizationRepository = new OrganizationRepository($db);
 $activityRepository = new ActivityRepository($db);
 $webhookEventRepository = new WebhookEventRepository($db);
+$sessionRepository = new SessionRepository($db);
 
 $templatingEngine = new Templating(ROOT.'/app/views/');
+$cookieHandler = new CookieHandler($_COOKIE);
 
-$session = new Session();
+// Create and set custom session handler
+$sessionHandler = new CustomSessionHandler($sessionRepository);
+session_set_save_handler($sessionHandler);
+
+$session = new Session($sessionRepository);
 $firewall = new Firewall($session);
 $request = new Request(
     $_SERVER['REQUEST_METHOD'], 
@@ -83,7 +91,6 @@ $request = new Request(
     $_POST, 
     $_FILES
 );
-$cookieHandler = new CookieHandler($_COOKIE);
 
 $router = new Router($firewall);
 
@@ -195,7 +202,7 @@ $router->addMatch(
     'POST',
     'deleteAdmin',
     [
-        new DeleteAdmin($adminRepository),
+        new DeleteAdmin($session, $adminRepository),
         'handle'
     ],
     [
@@ -257,7 +264,7 @@ $router->addMatch(
     'POST',
     'deleteOrganization',
     [
-        new DeleteOrganization($organizationRepository),
+        new DeleteOrganization($session, $adminRepository, $organizationRepository),
         'handle'
     ],
     [

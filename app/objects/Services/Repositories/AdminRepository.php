@@ -126,6 +126,23 @@ SQL;
     }
 
     /**
+     * Returns all admins from organization with given id
+     *
+     * @param [type] $organization_id
+     * @return void
+     */
+    public function findFromOrganization($organization_id){
+        $query = <<<SQL
+        select *
+        from admins
+        where organization_id=:organization_id;
+SQL;
+        $query = $this->db->prepare($query);
+        $query->execute([':organization_id' => $organization_id]);
+        return $query->fetchAll() ?: [];
+    }
+
+    /**
      * Returns all admins of type 'admin'.
      * 
      * NOTE: Return doesn't follow Admin model.

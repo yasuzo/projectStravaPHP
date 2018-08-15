@@ -2,11 +2,20 @@
 
 namespace Services;
 
+use Services\Repositories\SessionRepository;
+
 class Session{
-    public function __construct(){
+    private $sessionRepository;
+    private $sessionId;
+
+    public function __construct(SessionRepository $sessionRepository){
+        $this->sessionRepository = $sessionRepository;
+
         if(session_status() === PHP_SESSION_NONE){
             session_start();
         }
+
+        $this->sessionId = session_id();
     }
 
     public function getLoggedUserId(): ?int{
@@ -21,10 +30,18 @@ class Session{
     public function authenticate(int $id, string $authorizationLevel): void{
         $_SESSION['user']['id'] = $id;
         $_SESSION['user']['authorizationLevel'] = $authorizationLevel;
+        $this->sessionRepository->associateWithUser($this->sessionId, $id, $authorizationLevel);
     }
 
-    public function logout(): void{
-        unset($_SESSION['user']);
+    public function logout($user_id = false, string $user_type = ''): void{
+        if($user_id === false){
+            $this->sessionRepository->associateWithUser($this->sessionId, null, null);
+            unset($_SESSION['user']);
+            return;
+        }
+
+        $this->sessionRepository->deleteByUserIdAndType($user_id, $user_type);
+        
     }
 
     public function destroySessionProperty(string $key): void{

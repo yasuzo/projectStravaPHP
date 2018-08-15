@@ -10,13 +10,15 @@ require_once __DIR__ . '/baza.php';
 require_once __DIR__ . '/strava_config.php';
 require_once __DIR__ . '/libraries/helper_functions.php';
 
-use Services\Repositories\{UserRepository, ActivityRepository, WebhookEventRepository, OrganizationRepository};
+
+use Services\Repositories\{UserRepository, ActivityRepository, WebhookEventRepository, OrganizationRepository, SessionRepository};
 use Models\{Activity, Point};
 
 $userRepository = new UserRepository($db);
 $webhookEventRepository = new WebhookEventRepository($db);
 $organizationRepository = new OrganizationRepository($db);
 $activityRepository = new ActivityRepository($db);
+$sessionRepository = new SessionRepository($db);
 
 // creates an activity
 function createActivity($owner_id, $object_id){
@@ -45,8 +47,8 @@ function createActivity($owner_id, $object_id){
     $response = json_decode(curl_exec($curl), true);
     curl_close($curl);
 
-    if($response === null){
-        echo "respone = null!\n";
+    if($response === null || isset($response['errors']) === true){
+        echo "response error!\n";
         return;
     }
 
@@ -140,8 +142,14 @@ foreach($events as $event){
     }
 
     if($aspect_type === 'update' && $object_type === 'athlete' && isset($body['updates']['authorized']) && $body['updates']['authorized'] === 'false'){
-        // TODO: add what happens when user deauthorizes the app
-        
+        try{
+            $user = $userRepository->findByTrackingId($owner_id);
+        }catch(ResourceNotFoundException $e){
+            echo $e->getMessage();
+            return;
+        }
+
+        $sessionRepository->deleteByUserIdAndType($user->id(), 'user');
     }
 
 
