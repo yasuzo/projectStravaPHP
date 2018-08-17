@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
     <!-- Custom styleSheet  -->
-    <link rel="stylesheet" href="../app/views/style.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css">
 
     <title><?= safe($title); ?></title>
 
@@ -28,7 +28,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <!-- moja skripta za animacije -->
-    <script type="text/javascript" src="../app/views/basicScript.js"></script>
+    <script type="text/javascript" src="basicScript.js"></script>
 
 </body>
 </html>
