@@ -5,7 +5,7 @@
     </p>
     <!-- <a href="?controller=requestStravaAuth" id="connect-with-strava"><img src="connect_with_strava.png"></a> -->
     <!-- <a href="https://www.strava.com/oauth/authorize?client_id=20070&redirect_uri=http://localhost/public/?controller=performStravaAuth&response_type=code&approval_prompt=auto&scope=view_private" id="connect-with-strava"><img src="connect_with_strava.png"></a> -->
-    <a href="https://www.strava.com/oauth/authorize?client_id=20070&redirect_uri=http://localhost:3000/?controller=performStravaAuth&response_type=code&approval_prompt=auto&scope=view_private" id="connect-with-strava"><img src="connect_with_strava.png"></a>
+    <a href="https://www.strava.com/oauth/authorize?client_id=20070&redirect_uri=http://localhost/?controller=performStravaAuth&response_type=code&approval_prompt=auto&scope=view_private" id="connect-with-strava"><img src="connect_with_strava.png"></a>
     <div class="container z-depth-1 white darken-1 upute">
         <strong>**Upute za korištenje</strong>
         <ol>

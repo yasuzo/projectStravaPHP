@@ -28,7 +28,7 @@ function createActivity($owner_id, $object_id){
     try{
         $user = $userRepository->findByTrackingId($owner_id);
     }catch(ResourceNotFoundException $e){
-        echo $e->getMessage();
+        echo $e->getMessage() . "\n";
         return;
     }
 
@@ -48,11 +48,12 @@ function createActivity($owner_id, $object_id){
     curl_close($curl);
 
     if($response === null || isset($response['errors']) === true){
-        echo "response error!\n";
+        echo "Response error happened while trying to get details!\n";
         return;
     }
 
     if($response['end_latlng'] === null){
+        echo "There are no end coordinates!\n";
         return;
     }
 
@@ -71,8 +72,10 @@ function createActivity($owner_id, $object_id){
         if($org !== null){
             $orgPoint = new Point($org->longitude(), $org->latitude());
             if(Point::distance($point, $orgPoint) < 200){
+                echo "Distance from organization is less than 200m!\n";
                 $organization_id = $org->id();
             }else{
+                echo "Distance from organization is greater than 200m!\n";
                 $organization_id = null;
             }
         }else{
@@ -93,22 +96,21 @@ function createActivity($owner_id, $object_id){
         );
         
     }catch(Throwable $e){
-        echo $e->getMessage() . '\n';
+        echo "ERROR: " . $e->getMessage() . "\n";
         return;
     }
 
     try{
         $activityRepository->persist($activity);
+        echo "Activity with tracking id " . $activity->trackingId() . " successfully saved!\n";
     }catch(Exception $e){
-        echo "Can't save document\n";
+        echo "Can't save document with tracking id " . $activity->trackingId() . ":" . $e->getMessage() . "\n";
     }
-    
     
 }
 
+// START
 $events = $webhookEventRepository->findAll();
-
-echo "TEST\n";
 
 foreach($events as $event){
 
@@ -136,28 +138,33 @@ foreach($events as $event){
     }
 
     if(empty($errors) === false){
-        echo "ERRORS\n";
+        echo "Parameters are not valid!\n";
         $webhookEventRepository->deleteById($event['id']);
         continue;
     }
 
     if($aspect_type === 'update' && $object_type === 'athlete' && isset($body['updates']['authorized']) && $body['updates']['authorized'] === 'false'){
+        echo "User unauthorized an application\n---logging out user---\n";
+
         try{
             $user = $userRepository->findByTrackingId($owner_id);
         }catch(ResourceNotFoundException $e){
-            echo $e->getMessage();
+            echo $e->getMessage() . "\n";
             return;
         }
 
         $sessionRepository->deleteByUserIdAndType($user->id(), 'user');
-    }
 
+    }else if($aspect_type === 'create' && $object_type === 'activity'){
 
-    if($aspect_type === 'create' && $object_type === 'activity'){
-        echo "CREATE\n";
+        echo "Request to create an activity!\n---creating---\nObject id: " . $object_id . "\n";
         createActivity($owner_id, $object_id);
+
     }
 
     $webhookEventRepository->deleteById($event['id']);
+
+    echo "-------------------------------------------------------------------------\n";
+    echo "-------------------------------------------------------------------------\n";
 
 }

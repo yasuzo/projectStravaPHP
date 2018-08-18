@@ -22,8 +22,6 @@ class CustomSessionHandler implements \SessionHandlerInterface{
     public function gc($lifetime){
         $this->sessionRepository->deleteOlderThan($lifetime);
 
-        // Log the garbage collector call
-        \file_put_contents('../log.txt', $lifetime . ' @ ' . time());
         return true;
     }
 

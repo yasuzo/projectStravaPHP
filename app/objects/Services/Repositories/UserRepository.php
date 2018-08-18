@@ -92,7 +92,7 @@ SQL;
         $query->execute([':tracking_id' => $tracking_id]);
 
         if(($user = $query->fetch()) === false){
-            throw new ResourceNotFoundException('Could not find user with given id!');
+            throw new ResourceNotFoundException('Could not find user with given id! - id: ' . $tracking_id);
         }
         $user = new User(
             $user['firstName'], 
