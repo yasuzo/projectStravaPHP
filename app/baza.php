@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $dsn = 'mysql:host=strava-db;charset=utf8;dbname=strava';
+    $dsn = 'mysql:host=localhost;charset=utf8;dbname=strava';
     $db = new PDO(
         $dsn,
         DB_USER,
