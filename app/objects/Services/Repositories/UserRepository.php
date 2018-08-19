@@ -212,7 +212,7 @@ SQL;
      */
     public function findWithCountedActivities(string $organization_id): array{
         $query = <<<SQL
-        select users.id, users.firstName, users.lastName, users.username, count(activities.id) count
+        select users.id, users.firstName, users.lastName, users.username, count(case when activities.organization_id=users.organization_id then 1 end) count
         from users
         left join bans on users.organization_id=bans.organization_id
         left join activities on users.id=activities.user_id
