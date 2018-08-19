@@ -234,7 +234,7 @@ SQL;
      */
     public function findWithActivitiesDistance(string $organization_id): array{
         $query = <<<SQL
-        select users.id, users.firstName, users.lastName, users.username, coalesce(sum(activities.distance), 0) distance
+        select users.id, users.firstName, users.lastName, users.username, coalesce(sum(case when activities.organization_id=users.organization_id then activities.distance else 0 end), 0) distance
         from users
         left join bans on users.organization_id=bans.organization_id
         left join activities on users.id=activities.user_id
