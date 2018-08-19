@@ -3,6 +3,19 @@
 declare(strict_types=1);
 mb_internal_encoding('UTF-8');
 
+/**
+ * Formats duration in seconds to H:i:s format
+ *
+ * @param integer $seconds
+ * @return string
+ */
+function formatDuration(int $seconds): string{
+    $hours = $seconds % 3600;
+    $minutes = ($seconds - $hours * 3600) % 60;
+    $seconds -= $hours * 3600 + $minutes * 60;  
+    return "$hours:$minutes:$seconds";
+}
+
 // returns a safe string
 function safe(string $str): string {
     return htmlentities($str);

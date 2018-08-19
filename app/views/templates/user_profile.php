@@ -28,7 +28,7 @@
                 <div class="col s12">
                     <table class="activity-card-table">
                         <tr>
-                            <td>Trajanje:<br><strong><b><?= (new DateInterval('PT' . $activity['duration'] . 'S'))->format('%h:%i:%s'); ?></b></strong></td>
+                            <td>Trajanje:<br><strong><b><?= formatDuration($activity['duration']); ?></b></strong></td>
                             <td style="border-left: 1px solid rgba(121, 121, 121, 0.789);">Prijeđena udaljenost:<br><strong><b><?= safe($activity['distance'] / 1000); ?>&nbsp;km</b></strong></td>
                         </tr>
                     </table>
@@ -50,7 +50,7 @@
 <?php foreach($activities as $activity): ?>
         <script type="text/javascript">
             
-            let encodedRoute_<?= safe($activity['id']); ?> = "<?= $activity['polyline']; ?>";
+            let encodedRoute_<?= safe($activity['id']); ?> = "<?= str_replace('\\', '\\\\', $activity['polyline']); ?>";
             let polyline_<?= safe($activity['id']); ?> = L.Polyline.fromEncoded(encodedRoute_<?= safe($activity['id']); ?>);
             let coordinates_<?= safe($activity['id']); ?> = polyline_<?= safe($activity['id']); ?>.getLatLngs();
             let map_<?= safe($activity['id']); ?> = L.map('map_<?= safe($activity['id']); ?>', {

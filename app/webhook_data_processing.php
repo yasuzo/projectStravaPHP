@@ -58,7 +58,7 @@ function createActivity($owner_id, $object_id){
     }
 
     try{
-        $start_time = strtotime($response['start_date_local']);
+        $start_time = strtotime($response['start_date']);
         $end_time = $start_time + $response['elapsed_time'];
         $point = new Point($response['end_latlng'][1], $response['end_latlng'][0]);
 

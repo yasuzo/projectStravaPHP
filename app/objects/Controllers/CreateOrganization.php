@@ -45,7 +45,7 @@ class CreateOrganization implements Controller{
         try{
             $point = new Point($longitude, $latitude);
         }catch(DomainException $e){
-            $this->cookieHandler->setCookie('errors', 10, 'Geografska sirina i duzina mora biti u intervalu [-180, 180].');
+            $this->cookieHandler->setCookie('errors', 10, 'Geografska sirina mora biti u intervalu [-90, 90], a duzina u intervalu od [-180, 180].');
             return new RedirectResponse('?controller=createOrganization');
         }catch(InvalidArgumentException $e){
             $this->cookieHandler->setCookie('errors', 10, 'Geografska sirina i duzina mora biti broj!');

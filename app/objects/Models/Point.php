@@ -16,8 +16,7 @@ class Point{
      * @throws \DomainException
      */
     public function __construct(string $longitude, string $latitude){
-        $this->sanitizeCoordinate($longitude);
-        $this->sanitizeCoordinate($latitude);
+        $this->sanitizeCoordinates($latitude, $longitude);
         
         $this->longitude = $longitude;
         $this->latitude = $latitude;
@@ -117,15 +116,20 @@ class Point{
      * @throws \DomainException
      * @return void
      */
-    private function sanitizeCoordinate(string &$coordinate): void{
-        if(\is_string_number($coordinate) === false){
+    private function sanitizeCoordinate(string &$latitude, string &$longitude): void{
+        if(\is_string_number($latitude) === false || \is_string_number($longitude) === false){
             throw new \InvalidArgumentException('Coordinate given is not a number!');
         }
         
-        $coordinate = round($coordinate, 5);
+        $latitude = round($latitude, 5);
+        $longitude = round($longitude, 5);
 
-        if($coordinate > 180 || $coordinate < -180){
-            throw new \DomainException('Coordinate is not within the domain!');
+        if($longitude > 180 || $longitude < -180){
+            throw new \DomainException('Longitude is not within the domain!');
+        }
+
+        if($latitude > 90 || $latitude < -90){
+            throw new \DomainException('Latitude is not within the domain!');
         }
     }
 }
