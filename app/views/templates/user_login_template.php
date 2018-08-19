@@ -3,9 +3,7 @@
     <p class="white-text">
         Prijavite se sa svojim Strava računom!
     </p>
-    <!-- <a href="?controller=requestStravaAuth" id="connect-with-strava"><img src="connect_with_strava.png"></a> -->
-    <!-- <a href="https://www.strava.com/oauth/authorize?client_id=20070&redirect_uri=http://localhost/public/?controller=performStravaAuth&response_type=code&approval_prompt=auto&scope=view_private" id="connect-with-strava"><img src="connect_with_strava.png"></a> -->
-    <a href="https://www.strava.com/oauth/authorize?client_id=20070&redirect_uri=http://localhost/?controller=performStravaAuth&response_type=code&approval_prompt=auto&scope=view_private" id="connect-with-strava"><img src="connect_with_strava.png"></a>
+   <a href="https://www.strava.com/oauth/authorize?client_id=20070&redirect_uri=http://212.92.194.220:56566/?controller=performStravaAuth&response_type=code&approval_prompt=auto&scope=view_private" id="connect-with-strava"><img src="connect_with_strava.png"></a>
     <div class="container z-depth-1 white darken-1 upute">
         <strong>**Upute za korištenje</strong>
         <ol>
