@@ -116,7 +116,7 @@ class Point{
      * @throws \DomainException
      * @return void
      */
-    private function sanitizeCoordinate(string &$latitude, string &$longitude): void{
+    private function sanitizeCoordinates(string &$latitude, string &$longitude): void{
         if(\is_string_number($latitude) === false || \is_string_number($longitude) === false){
             throw new \InvalidArgumentException('Coordinate given is not a number!');
         }

@@ -11,10 +11,15 @@ define('MAX_LEN_USER', 40);
 
 
 function validate_name(string $firstName, string $lastName, ?array &$errors){
-    $regex = "/^[a-zA-Z\p{L}]{1,25}$/u";
-    if((bool)preg_match($regex, $firstName) === false || (bool)preg_match($regex, $lastName) === false){
+    // $regex = "/^[a-zA-Z\p{L}]{1,25}$/u";
+    // if((bool)preg_match($regex, $firstName) === false || (bool)preg_match($regex, $lastName) === false){
+    //     $errors[] = "Ime i prezime smije sadrzavati samo slova i mora biti dugacko od 1 do 25 slova!";
+    //     return false;
+    // }
+
+    if(mb_strlen($firstName) > 25 || mb_strlen($lastName) > 25){
         $errors[] = "Ime i prezime smije sadrzavati samo slova i mora biti dugacko od 1 do 25 slova!";
-        return false;
+        return false;       
     }
     return true;
 }
