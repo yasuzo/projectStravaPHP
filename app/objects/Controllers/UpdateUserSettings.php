@@ -41,8 +41,8 @@ class UpdateUserSettings implements Controller{
             return new RedirectResponse('?controller=userSettings');
         }
 
-        $firstName = utf8_encode($firstName);
-        $lastName = utf8_encode($lastName);
+        $firstName = $firstName;
+        $lastName = $lastName;
         \validate_name($firstName, $lastName, $errors);
         \validate_username($username, $errors);
 

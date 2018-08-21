@@ -18,7 +18,7 @@ function formatDuration(int $seconds): string{
 
 // returns a safe string
 function safe(string $str): string {
-    return htmlentities(utf8_decode($str));
+    return htmlentities($str);
 }
 
 // provjerava je li bilo koji od argumenata prazan

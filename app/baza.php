@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $dsn = 'mysql:host=' . DB_HOST .';charset=utf8;dbname=strava';
+    $dsn = 'mysql:host=' . DB_HOST .';charset=utf8mb4;dbname=strava';
     $db = new PDO(
         $dsn,
         DB_USER,

@@ -52,4 +52,12 @@
             </div>
         </form>
     </div>
+    <div class="divider"></div>
+    <form id="delete_form" method="post" action="?controller=userDelete">
+        <div class="row">
+            <div class="input-field col s12">
+                <a href="#" onclick="$('#delete_form').submit()" class="waves-effect waves-light btn red">Izbrisi racun</a>
+            </div>
+        </div>
+    <form>
 </div>

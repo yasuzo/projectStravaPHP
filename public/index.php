@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 define('ROOT', __DIR__.'/..');
 
 // strava conf
@@ -62,7 +66,8 @@ use Controllers\{
     ShowUserSettings,
     UpdateUserSettings,
     StravaWebhookSubscription,
-    StravaWebhook
+    StravaWebhook,
+    DeleteUser
 };
 
 use Http\Responses\HTMLResponse;
@@ -468,6 +473,18 @@ $router->addMatch(
     ],
     [
         'other'
+    ]
+);
+
+$router->addMatch(
+    'POST',
+    'userDelete',
+    [
+        new DeleteUser($session, $cookieHandler, $userRepository),
+        'handle'
+    ],
+    [
+        'user'
     ]
 );
 

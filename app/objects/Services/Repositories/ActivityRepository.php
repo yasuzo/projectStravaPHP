@@ -22,7 +22,8 @@ class ActivityRepository extends Repository{
     public function findAllFromUser(string $user_id): array{
         $query = <<<SQL
         select * from activities
-        where user_id=:user_id;
+        where user_id=:user_id
+        order by ended_at desc;
 SQL;
         $query = $this->db->prepare($query);
         $query->execute([':user_id' => $user_id]);

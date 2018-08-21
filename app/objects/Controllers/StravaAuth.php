@@ -62,8 +62,8 @@ class StravaAuth{
         curl_close($curl);
 
         $newUser = new User(
-            utf8_encode($response['athlete']['firstname']),
-            utf8_encode($response['athlete']['lastname']),
+            $response['athlete']['firstname'],
+            $response['athlete']['lastname'],
             $response['athlete']['id'],
             $response['access_token'],
             $response['athlete']['profile']
