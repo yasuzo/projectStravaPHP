@@ -9,17 +9,22 @@ use Services\Repositories\UserRepository;
 
 use Models\User;
 
-use Services\Session;
+use Services\{Session, CookieHandler};
 
 use ResourceNotFoundException;
 
+/**
+ * User authentication
+ */
 class StravaAuth{
     private $userRepository;
     private $session;
+    private $cookieHandler;
 
-    public function __construct(Session $session, UserRepository $userRepository){
+    public function __construct(Session $session, CookieHandler $cookieHandler, UserRepository $userRepository){
         $this->userRepository = $userRepository;
         $this->session = $session;
+        $this->cookieHandler = $cookieHandler;
     }
 
     public function handle(Request $request): Response{
@@ -50,6 +55,8 @@ class StravaAuth{
 
         $response = json_decode(curl_exec($curl), true);
 
+        curl_close($curl);
+
         // TODO: add error message
         if($response === null){
             return new RedirectResponse('?controller=login');
@@ -59,8 +66,8 @@ class StravaAuth{
             return new RedirectResponse('?controller=error404');
         }
 
-        curl_close($curl);
-
+        
+        // creates user from received data
         $newUser = new User(
             $response['athlete']['firstname'],
             $response['athlete']['lastname'],
@@ -76,12 +83,22 @@ class StravaAuth{
 
             $this->userRepository->update($user);
         }catch(ResourceNotFoundException $e){
+            // set flag to indicate that the user is new
+            $isUserNew = true;
+
             $this->userRepository->persist($newUser);
             $user = $this->userRepository->findByTrackingId($newUser->trackingId());
         }
 
         $this->session->authenticate($user->id(), 'user');
 
-        return new RedirectResponse('?controller=index');
+        // new users redirects to the settings for username setup and old users to the index page
+        if(@$isUserNew === true){
+            $this->cookieHandler->setCookie('messages', 10, "Da biste se nalazili na rang listi, molimo odaberite organizaciju i vlastito korisnicko ime koje ce biti prikazano na rang listi.");
+            return new RedirectResponse('?controller=userSettings');
+        }else{
+            return new RedirectResponse('?controller=index');
+        }
+        
     }
 }

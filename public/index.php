@@ -4,6 +4,11 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// set max session lifetime to 30 days
+ini_set('session.gc_maxlifetime', 3600*24*30);
+// set session cookie lifetime to 30 days
+ini_set('session.cookie_lifetime', 3600*24*30);
+
 define('ROOT', __DIR__.'/..');
 
 // strava conf
@@ -377,7 +382,7 @@ $router->addMatch(
     ]
 );
 
-$stravaAuthController = new StravaAuth($session, $userRepository);
+$stravaAuthController = new StravaAuth($session, $cookieHandler, $userRepository);
 
 // $router->addMatch(
 //     'GET',
