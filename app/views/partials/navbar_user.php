@@ -10,7 +10,7 @@
   
     <nav>
         <div class="nav-wrapper red">
-            <a href="?controller=index" class="brand-logo">Carless</a>
+            <a href="?controller=index" class="brand-logo">Ciklometar</a>
             
             <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 

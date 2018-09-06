@@ -1,6 +1,6 @@
 <nav>
     <div class="nav-wrapper red">
-        <a href="?controller=index" class="brand-logo left">CarLess</a>
+        <a href="?controller=index" class="brand-logo left">Ciklometar</a>
 
         <ul class="right hide-on-med-and-down">
             <li><a href="?controller=login" class="waves-effect waves-light btn orange">PRIJAVA</a></li>
