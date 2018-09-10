@@ -1,18 +1,18 @@
 <div class="container">
     <h2>Dobrodošli na CIKLOMETAR!</h2>
     <div class="row">
-        <div class="col m7">
+        <div class="col l7">
             <h4>Što je Ciklometar i kako radi?</h4>
             <p>Ciklometar je web aplikacija koja mjeri dolaske biciklom do organizacije - škole ili radnog mjesta.
             Ideja je vrlo jednostavna. Onaj tko najviše koristi bicikl kao prijevozno sredstvo do svoje organizacije bit će nagrađen!
             Na stranicama Ciklometra bit će objavljene dvije liste po organizaciji. Jedna lista je broj dolazaka, a druga broj prijeđenih kilometara pri dolasku. Nagrade za svaku listu će propisati svaka organizacija za svoje članove.</p>
         </div>
-        <div class="col m5">
-            <img src="photo.png">
+        <div class="col l5">
+            <img  class="responsive-img" src="photo.png">
         </div>
     </div>
     <div class="row">
-        <div class="col m7 push-m5">
+        <div class="col l7 push-l5">
             <h4>Tehnički detalji</h4>
             <p>Aplikacija mjeri i broji samo dolaske do organizacije.
             Točnu lokaciju organizacije određuje njen administrator.
@@ -20,8 +20,8 @@
             Aplikacija koristi podatke sa mobilne aplikacije Strava koju je potrebno imati instalirano na svom mobilnom telefonu i spojenom sa Ciklometrom.
             Administrator organizacije ima mogućnost obrisati vaš račun ukoliko smatra da ne pripadate određenoj organizaciji ili koristite korisničko ime koje narušava ugled organizacije.</p>
         </div>
-        <div class="col m5 pull-m7">
-            <img src="photo.png">
+        <div class="col l5 pull-l7">
+            <img class="responsive-img" src="photo.png">
         </div>
     </div>
 
