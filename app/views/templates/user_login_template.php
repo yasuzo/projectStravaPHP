@@ -6,13 +6,15 @@
     <a href="https://www.strava.com/oauth/authorize?client_id=20070&redirect_uri=<?= AUTH_CALLBACK_DOMAIN ?>/?controller=performStravaAuth&response_type=code&approval_prompt=auto&scope=view_private" id="connect-with-strava"><img src="connect_with_strava.png"></a>
     <div><small class="white-text">Prijavom prihvacate <a class="orange-text modal-trigger" href="#terms">uvjete koristenja</a>.</small></div>
     <div class="container z-depth-1 white darken-1 upute">
-        <strong>**Upute za korištenje</strong>
+        <strong>**Upute za korištenje
         <ol>
-            <li>Napravite korisnički račun na <a href="http://strava.com" class="orange-text"><b>Stravinoj web stranici</b></a></li>
-            <li>Prijavite se u <b>Ciklometar</b> s Vašim Strava računom</li>
-            <li>Skinite Strava aplikaciju na Vaš pametni telefon</li>
-            <li>Prije svake aktivnosti pokrenite Strava aplikaciju</li>
+            <li>Prilikom svakog odlaska prema svojoj organizaciji pokrenite <a class="orange-text" href="https://www.strava.com">Stravu.</a></li>
+            <li>Snimajte aktivnost.</li>
+            <li>Odaberite sport – bicikl.</li>
+            <li>Pritisnite „Start“</li>
+            <li>Zaustavite aktivnost po dolasku na odredište. Vaš rezultat će se automatski upisati na rang listu vaše organizacije.</li>
         </ol>
+        </strong>
     </div>
 </div>
 
