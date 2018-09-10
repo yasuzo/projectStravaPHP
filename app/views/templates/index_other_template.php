@@ -1,13 +1,13 @@
 <div class="container">
     <h2>Dobrodošli na CIKLOMETAR!</h2>
     <div class="row">
-        <div class="col m8">
+        <div class="col m7">
             <h4>Što je Ciklometar i kako radi?</h4>
             <p>Ciklometar je web aplikacija koja mjeri dolaske biciklom do organizacije - škole ili radnog mjesta.
             Ideja je vrlo jednostavna. Onaj tko najviše koristi bicikl kao prijevozno sredstvo do svoje organizacije bit će nagrađen!
             Na stranicama Ciklometra bit će objavljene dvije liste po organizaciji. Jedna lista je broj dolazaka, a druga broj prijeđenih kilometara pri dolasku. Nagrade za svaku listu će propisati svaka organizacija za svoje članove.</p>
         </div>
-        <div class="col m4">
+        <div class="col m5">
             <img src="photo.png">
         </div>
     </div>
