@@ -12,16 +12,16 @@
         </div>
     </div>
     <div class="row">
-        <div class="col m5">
-            <img src="photo.png">
-        </div>
-        <div class="col m7">
+        <div class="col m7 push-m5">
             <h4>Tehnički detalji</h4>
             <p>Aplikacija mjeri i broji samo dolaske do organizacije.
             Točnu lokaciju organizacije određuje njen administrator.
             Liste ni u jednom trenutku ne prikazuju osobne podatke već proizvoljno korisničko ime.
             Aplikacija koristi podatke sa mobilne aplikacije Strava koju je potrebno imati instalirano na svom mobilnom telefonu i spojenom sa Ciklometrom.
             Administrator organizacije ima mogućnost obrisati vaš račun ukoliko smatra da ne pripadate određenoj organizaciji ili koristite korisničko ime koje narušava ugled organizacije.</p>
+        </div>
+        <div class="col m5 pull-m7">
+            <img src="photo.png">
         </div>
     </div>
 
