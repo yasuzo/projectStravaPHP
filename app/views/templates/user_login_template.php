@@ -1,17 +1,17 @@
 <div class="container z-depth-2 red login-card" style="text-align:center;">
-    <h3 class="white-text">Ciklometar</h3>
+    <h3><a class="white-text" href="/">Ciklometar</a></h3>
     <p class="white-text">
         Prijavite se sa svojim Strava računom!
     </p>
     <a href="https://www.strava.com/oauth/authorize?client_id=20070&redirect_uri=<?= AUTH_CALLBACK_DOMAIN ?>/?controller=performStravaAuth&response_type=code&approval_prompt=auto&scope=view_private" id="connect-with-strava"><img src="connect_with_strava.png"></a>
-    <div><small class="white-text">Prijavom prihvacate <a class="orange-text modal-trigger" href="#terms">uvjete koristenja</a>.</small></div>
+    <div><small class="white-text">Prijavom prihvacate <a class="orange-text text-lighten-3 modal-trigger" href="#terms">uvjete koristenja</a>.</small></div>
     <div class="container z-depth-1 white darken-1 upute">
         <strong>**Upute za korištenje
         <ol>
             <li>Prilikom svakog odlaska prema svojoj organizaciji pokrenite <a class="orange-text" href="https://www.strava.com">Stravu.</a></li>
             <li>Snimajte aktivnost.</li>
             <li>Odaberite sport – bicikl.</li>
-            <li>Pritisnite „Start“</li>
+            <li>Pritisnite <b class="orange-text">Start</b></li>
             <li>Zaustavite aktivnost po dolasku na odredište. Vaš rezultat će se automatski upisati na rang listu vaše organizacije.</li>
         </ol>
         </strong>
