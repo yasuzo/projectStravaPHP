@@ -34,13 +34,13 @@ class ShowAdminLoginPage implements Controller{
 
         // saves last page a user was on so this can redirect him to that page if he was already logged in
         if($request->httpReferer() !== null && parse_url($request->httpReferer())['host'] === "ciklometar.krizevci.hr"){
-            \send_message(parse_url($request->httpReferer())['host']);
-            \send_message($request->httpReferer());
             $this->session->setSessionProperty('lastPage', $request->httpReferer());
         }
 
         // redirects a user if he is already logged in
         if($this->session->isAuthenticated()){
+            \send_message($this->session->getSessionProperty('lastPage') ?? '?controller=index');
+            die();
             return new RedirectResponse($this->session->getSessionProperty('lastPage') ?? '?controller=index');
         }
 
