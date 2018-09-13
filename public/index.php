@@ -24,7 +24,7 @@ require_once ROOT."/app/libraries/helper_functions.php";
 require_once ROOT."/app/libraries/validation_helpers.php";
 
 $stream = fopen("../../incoming_log.txt", 'a');
-fwrite($stream, "\n" . date("d.m.Y, H:i:s") . " ....." . $_GET['controller'] ?? "no" . "\n");
+fwrite($stream, "\n" . date("d.m.Y, H:i:s", time()) . " ....." . $_GET['controller'] ?? "no" . "\n");
 fclose($stream);
 
 
