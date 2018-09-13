@@ -8,13 +8,13 @@
     <div id="activities" class="col s12">
 
         <?php if(empty($activities) === true): ?>
-        <div class="container z-depth-4 blue-grey lighten-5 no-activities-found" style="padding-top: 1em; padding-bottom: 1em; text-align:center; margin-top: 1em; margin-bottom: 1em;">
+        <div class="container z-depth-1 blue-grey lighten-5 no-activities-found" style="padding-top: 1em; padding-bottom: 1em; text-align:center; margin-top: 1em; margin-bottom: 1em;">
             <strong>Nema aktivnosti!</strong>
         </div>
         <?php endif; ?>
 
         <?php foreach($activities as $activity): ?>
-        <div class="container z-depth-4 blue-grey lighten-5 activity" style="margin-top: 1em;">
+        <div class="container z-depth-1 blue-grey lighten-5 activity" style="margin-top: 1em;">
             <small>&nbsp;<?= date('d.m.Y', strtotime($activity['ended_at'])); ?> @</small>
             <h5><?= date('H:i', strtotime($activity['ended_at'])); ?>h</h5>
             <hr>

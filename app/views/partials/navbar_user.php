@@ -41,18 +41,18 @@
 
 <!-- Modal Structure -->
 <div id="guide" class="modal modal">
-    <div class="modal-content">
+    <div class="modal-content flow-text">
         <h4>Upute</h4>
         <div class="divider"></div>
-            <ol>
-                <li>Prilikom svakog odlaska prema svojoj organizaciji pokrenite Stravu.</li>
-                <li>Snimajte aktivnost.</li>
-                <li>Odaberite sport – bicikl.</li>
-                <li>Pritisnite <b class="orange-text">Start</b></li>
-                <li>Zaustavite aktivnost po dolasku na odredište. Vaš rezultat će se automatski upisati na rang listu vaše organizacije.</li>
-            </ol>
+        <ol>
+            <li>Prilikom svakog odlaska prema svojoj organizaciji pokrenite Stravu.</li>
+            <li>Snimajte aktivnost.</li>
+            <li>Odaberite sport – bicikl.</li>
+            <li>Pritisnite <b class="orange-text">Start</b></li>
+            <li>Zaustavite aktivnost po dolasku na odredište. Vaš rezultat će se automatski upisati na rang listu vaše organizacije.</li>
+        </ol>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Zatvori</a>
+        <a href="#!" class="modal-close waves-effect waves-orange btn-flat">Zatvori</a>
     </div>
 </div>

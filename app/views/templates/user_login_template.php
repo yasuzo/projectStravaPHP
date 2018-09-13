@@ -4,7 +4,7 @@
         Prijavite se sa svojim Strava računom!
     </p>
     <a href="https://www.strava.com/oauth/authorize?client_id=20070&redirect_uri=<?= AUTH_CALLBACK_DOMAIN ?>/?controller=performStravaAuth&response_type=code&approval_prompt=auto&scope=view_private" id="connect-with-strava"><img src="connect_with_strava.png"></a>
-    <div><small class="white-text">Prijavom prihvacate <a class="orange-text text-lighten-3 modal-trigger" href="#terms">uvjete koristenja</a>.</small></div>
+    <div><small class="white-text">Prijavom protvrđujete da ste pročitali i razumjeli informacije navedene <a class="orange-text text-lighten-3 modal-trigger" href="#terms">ovdje</a>.</small></div>
     <div class="container z-depth-1 white darken-1 upute">
         <strong>**Upute za korištenje
         <ol>
@@ -21,13 +21,21 @@
  <!-- Modal Structure -->
 <div id="terms" class="modal modal-fixed-footer">
     <div class="modal-content">
-        <h4>Modal Header</h4>
+        <h4>Informacije o Ciklometru</h4>
         <div class="divider"></div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac dui mi. Quisque vitae pharetra odio. Ut auctor urna ut congue laoreet. Integer iaculis efficitur nunc nec pharetra. Morbi bibendum eu nisl sodales consectetur. Pellentesque eu lorem vel nisi auctor consequat nec sit amet felis. Praesent nisl dui, viverra vel sem vitae, commodo mollis odio.
-
-Ut pretium neque diam, sit amet dignissim eros aliquam nec. Cras feugiat aliquet ligula, at maximus odio vulputate at. Aenean a massa fermentum dolor malesuada posuere. Vestibulum scelerisque justo at sollicitudin viverra. Donec in tellus vitae lectus ullamcorper maximus sed at metus. Suspendisse potenti. Duis ullamcorper, neque a commodo aliquam, mauris metus gravida mauris, a porttitor odio leo id orci. Duis nec commodo nisi, id suscipit turpis. Nulla eu suscipit mi, sit amet pretium felis. Nam consequat placerat justo, nec venenatis massa dapibus sed.
-
-Suspendisse magna metus, placerat et tincidunAliquam nec risus varius nulla imperdiet volutpat id ac felis. Quisque id nulla ante. Nunc eleifend dolor vel tellus aliquam rhoncus. Aenean vel mollis metus. Phasellus eu efficitur massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec porta risus elit, et fermentum libero consequat pulvinar. Cras quam diam, eleifend nec viverra sit amet, fermentum nec dolor. Nunc posuere consequat pretium. In porta augue dapibus tortor vulputate, in luctus enim faucibus. Sed eu velit ut purus rhoncus blandit. Fusce sollicitudin risus venenatis nibh accumsan, ut ultrices eros dignissim. Nulla bibendum ante sed eros egestas, dignissim condimentum erat dignissim. Proin at ultrices risus. Fusce tempor bibendum nunc euismod sodales.</p>
+        <h6><b>Opće informacije</b></h6>
+        <p>Web servis Ciklometar (u daljnjem tekstu samo Ciklometar) radi na način da prikuplja podatke o kretanju korisnika preko mobilne aplikacije Strava.
+        Prikupljanje podataka moguće je tek nakon što je korisnik to odobrio u samoj Strava aplikaciji.
+        Ciklometar prikuplja podatke o kretanju isključivo kada se odredište poklapa sa odredištem organizacije pri kojoj je korisnik registriran.
+        Ciklometar objavljuje listu korisnika sa brojem njihovih dolazaka do odredišta i brojem prijeđenih kilometara.</p>
+        <h6><b>Prijava i korisnički račun</b></h6>
+        <p>U postupku prijave korisnik se prijavljuje preko aplikacije Strava sa korisničkim podacima od aplikacije Strava.</p>
+        <h6><b>Privatnost</b></h6>
+        <p>Ciklometar u najvećoj mogućoj mjeri štiti privatnost svojih korisnika.
+        Ciklometar će dozvoliti uvid o broju dolazaka te broju prijeđenih kilometara svim svojim korisnicima.
+        Objavljena lista, osim samih brojčanih podataka, sadrži i korisnička imena korisnika koje nije moguće jednoznačno pridijeliti određenoj osobi.
+        Ciklometar se obvezuje da ime i prezime osobe koje se traži pri registraciji neće objavljivati javno već ih prikuplja isključivo za potrebe organizacije pri kojoj je korisnik registriran.
+        Imajući u vidu da je internet javno dostupna podatkovna mreža te da postoje osobe koje posjeduju takva stručna znanja i vještine pomoću kojih, usprkos sofisticiranim mjerama zaštite koje se primjenjuju, koristeći se internetom, kakvom drugom mrežom, uređajem ili resursom mogu izvršiti različite neovlaštene i protupravne radnje/djela u odnosu na internet stranicu, internet resurse objavljene na internet stranici, Ciklometar ne može jamčiti korisnicima sigurnost i funkcionalnost internet resursa, kao ni sigurnost i funkcionalnost internet stranice. Stoga, svaki korisnik koristi internet stranicu na svoju vlastitu odgovornost.</p>
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-red btn-flat">Zatvori</a>

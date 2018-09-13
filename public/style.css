@@ -51,13 +51,13 @@ navbar{
     margin-top: 5em;
     /* height: 25em; */
     padding-bottom: 1em;
-    border-radius: 0.45em;
+    border-radius: 0.15em;
 }
 
 .organization-card{
     height: 15em; 
     margin: 0.5em 0.5em 0.5em 0.5em;
-    border-radius: 0.45em;
+    border-radius: 0.15em;
 }
 
 .upute{
@@ -65,7 +65,7 @@ navbar{
     padding: 1em;
     margin-top: 2em;
     
-    border-radius: 0.45em;
+    border-radius: 0.15em;
 }
 
 /* #connect-with-strava{
@@ -80,13 +80,13 @@ navbar{
 } */
 
 .admin-login{
-    border-radius: 0.45em;
+    border-radius: 0.15em;
 }
 
 .admin-user-card{
-    border-radius: 0.45em;
+    border-radius: 0.15em;
 }
 
 .no-activities-found{
-    border-radius: 0.45em;
+    border-radius: 0.15em;
 }
