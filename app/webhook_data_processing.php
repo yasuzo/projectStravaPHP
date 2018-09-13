@@ -112,6 +112,7 @@ function createActivity($owner_id, $object_id){
 // START
 $events = $webhookEventRepository->findAll();
 
+echo "\n-------------------------------------------------------------------";
 echo "Time: " . date("d.m.Y", time()) . "\n";
 echo "Found " . count($events) . " events -> processing starts\n";
 
