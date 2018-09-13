@@ -33,7 +33,7 @@ class ShowAdminLoginPage implements Controller{
     public function handle(Request $request): Response{
 
         // saves last page a user was on so this can redirect him to that page if he was already logged in
-        if($request->httpReferer() !== null){
+        if($request->httpReferer() !== null && parse_url($request->httpReferer())['host'] === "ciklometar.krizevci.hr"){
             $this->session->setSessionProperty('lastPage', $request->httpReferer());
         }
 

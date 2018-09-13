@@ -13,7 +13,7 @@ class StravaWebhookSubscription implements Controller{
         \file_put_contents('../log.html', \ob_get_clean());
 
         \http_response_code(200);
-        return new JSONResponse(['hub.challenge' => $request->get()['?hub_challenge'] ?? '']);
+        return new JSONResponse(['hub.challenge' => $request->get()['hub_challenge'] ?? '']);
     }
 
 }
