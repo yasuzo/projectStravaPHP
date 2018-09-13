@@ -32,17 +32,17 @@ class ShowAdminLoginPage implements Controller{
 
     public function handle(Request $request): Response{
 
+        /* WEIR BEHAVIOR
         // saves last page a user was on so this can redirect him to that page if he was already logged in
         if($request->httpReferer() !== null && parse_url($request->httpReferer())['host'] === "ciklometar.krizevci.hr"){
-            \send_message($request->httpReferer());
-            \send_message(parse_url($request->httpReferer())['host']);
-            die();
             $this->session->setSessionProperty('lastPage', $request->httpReferer());
         }
+        */
 
         // redirects a user if he is already logged in
         if($this->session->isAuthenticated()){
-            return new RedirectResponse($this->session->getSessionProperty('lastPage') ?? '?controller=index');
+            // return new RedirectResponse($this->session->getSessionProperty('lastPage') ?? '?controller=index');
+            return new RedirectResponse('?controller=index');
         }
 
         // Reads error messages stored in a cookie
