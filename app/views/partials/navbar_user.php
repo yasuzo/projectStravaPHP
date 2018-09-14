@@ -23,7 +23,7 @@
             </ul>
 
             <ul class="right hide-on-large-only">
-                <li><a href="#guide" class="tooltipped modal-trigger" data-position="bottom" data-tooltip="Upute"><i class="material-icons">help</i></a></li>
+                <li><a href="#guide" class="modal-trigger"><i class="material-icons">help</i></a></li>
             </ul>
 
             <ul class="side-nav" id="mobile">
@@ -41,10 +41,10 @@
 
 <!-- Modal Structure -->
 <div id="guide" class="modal modal">
-    <div class="modal-content flow-text">
+    <div class="modal-content">
         <h4>Upute</h4>
         <div class="divider"></div>
-        <ol>
+        <ol style="padding-left: 1.2em;">
             <li>Prilikom svakog odlaska prema svojoj organizaciji pokrenite Stravu.</li>
             <li>Snimajte aktivnost.</li>
             <li>Odaberite sport – bicikl.</li>

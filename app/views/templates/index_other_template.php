@@ -24,7 +24,7 @@
         <div class="col l6">
         <h4>Kako se priključiti?</h4>
             <p>U ovom trenutku aplikacija je u fazi testiranja i jedina moguća organizacija je <b>Osnovna Škola Vladimir Nazor.</b></p>
-            <ol>
+            <ol style="padding-left: 1.2em;">
                 <li>Ukoliko još nemate, instalirajte mobilnu aplikaciju <b class="orange-text">Strava</b> na svoj telefon. Možete ju pronaći u trgovini aplikacijama na vašem telefonu. Potpuno je besplatna za osnovno korištenje, što je i dovoljno za ovu namjenu. Zapamtite podatke s kojima se registrirate (Moguće je koristiti Facebook ili Google račun)</li>
                 <li>Na ovoj web stranici (ciklometar.krizevci.hr) idite na <b><a class="orange-text" href="?controller=login">Prijava</a></b></li>
                 <li>Pritisnite <b class="orange-text">Connect with STRAVA</b></li>
@@ -37,7 +37,7 @@
 
         <div class="col l6">
             <h4>Kako koristiti?</h4>
-            <ol>
+            <ol style="padding-left: 1.2em;">
                 <li>Prilikom svakog odlaska prema svojoj organizaciji pokrenite Stravu.</li>
                 <li>Snimajte aktivnost.</li>
                 <li>Odaberite sport – bicikl.</li>
