@@ -62,7 +62,7 @@ class UpdateAdminSettings implements Controller{
                 $this->adminRepository->update($admin);
                 $this->cookieHandler->setCookie('messages', 10, 'Postavke su spremljene!');
             }catch(DuplicateEntryException $e){
-                $this->cookieHandler->setCookie('usernameErrors', 10, 'Korisnicko ime je zauzeto!');
+                $this->cookieHandler->setCookie('usernameErrors', 10, 'Korisničko ime je zauzeto!');
                 return new RedirectResponse('?controller=settings');
             }
         }else{
@@ -94,7 +94,7 @@ class UpdateAdminSettings implements Controller{
             $admin->changePassword($newPassword1);
 
             $this->adminRepository->update($admin);
-            $this->cookieHandler->setCookie('messages', 10, 'Postavke su spremljene!');
+            $this->cookieHandler->setCookie('messages', 10, 'Postavke su uspješno spremljene!');
         }
 
         // success

@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="input-field col l6 s12">
                             <input id="username" name="username" type="text" class="validate" maxlength="40" value="<?= safe($username); ?>">
-                            <label for="username">Korisnicko ime</label>
+                            <label for="username">Korisničko ime</label>
                         </div>
                     </div>
 

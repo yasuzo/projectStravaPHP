@@ -17,7 +17,7 @@
             <thead>
                 <tr>
                     <th>Plasman</th>
-                    <th>Korisnicko ime</th>
+                    <th>Korisničko ime</th>
                     <th>Kilometri</th>
                 </tr>
             </thead>
@@ -48,7 +48,7 @@
             <thead>
                 <tr>
                     <th>Plasman</th>
-                    <th>Korisnicko ime</th>
+                    <th>Korisničko ime</th>
                     <th>Dolasci</th>
                 </tr>
             </thead>

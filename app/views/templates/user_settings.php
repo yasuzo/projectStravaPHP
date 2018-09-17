@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="input-field col l6 s12">
                     <input id="username" name="username" type="text" class="validate" maxlength="40" value="<?= safe($user->username() ?? ''); ?>">
-                    <label for="username">Korisnicko ime</label>
+                    <label for="username">Korisničko ime</label>
                 </div>
             </div>
             <div class="row">
@@ -56,7 +56,7 @@
     <form id="delete_form" method="post" action="?controller=userDelete">
         <div class="row">
             <div class="input-field col s12">
-                <a href="#" onclick="$('#delete_form').submit()" class="waves-effect waves-light btn red">Izbrisi racun</a>
+                <a href="#" onclick="$('#delete_form').submit()" class="waves-effect waves-light btn red">Izbriši račun</a>
             </div>
         </div>
     <form>

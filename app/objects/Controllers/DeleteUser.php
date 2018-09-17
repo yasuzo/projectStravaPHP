@@ -50,7 +50,7 @@ class DeleteUser implements Controller{
         curl_close($curl);
 
         if($response === false){
-            $this->cookieHandler->setCookie('errors', 10, "Dogodila se pogreska, molimo pokusajte malo kasnije.");
+            $this->cookieHandler->setCookie('errors', 10, "Dogodila se pogreška, molimo pokušajte malo kasnije.");
             return new RedirectResponse('?controller=userSettings');
         }
 

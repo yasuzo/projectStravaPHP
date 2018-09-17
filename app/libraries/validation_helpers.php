@@ -11,14 +11,14 @@ define('MAX_LEN_USER', 40);
 
 
 function validate_name(string $firstName, string $lastName, ?array &$errors){
-    // $regex = "/^[a-zA-Z\p{L}]{1,25}$/u";
+    $regex = "/[a-zA-Z\p{L}][a-zA-Z\p{L}]/u";
     // if((bool)preg_match($regex, $firstName) === false || (bool)preg_match($regex, $lastName) === false){
     //     $errors[] = "Ime i prezime smije sadrzavati samo slova i mora biti dugacko od 1 do 25 slova!";
     //     return false;
     // }
 
-    if(mb_strlen($firstName) > 25 || mb_strlen($lastName) > 25){
-        $errors[] = "Ime i prezime smije sadrzavati samo slova i mora biti dugacko od 1 do 25 slova!";
+    if(mb_strlen($firstName) > 25 || (bool)preg_match($regex, $firstName) === false || mb_strlen($lastName) > 25 || (bool)preg_match($regex, $lastName) === false){
+        $errors[] = "Ime i prezime ne smiju sadržavati više od 25 znakova i moraju imati barem dva slova!";
         return false;       
     }
     return true;
@@ -27,15 +27,16 @@ function validate_name(string $firstName, string $lastName, ?array &$errors){
 function validate_username(string $username, ?array &$errors): bool{
     $regex = "/^(?=[\w\-]*[a-zA-Z\p{L}])[\w\-]{".MIN_LEN_USER.",".MAX_LEN_USER."}$/u";
     if((bool)preg_match($regex, $username) === false){
-        $errors[] = "Korisnicko ime smije sadrzavati slova, brojke i _,- te mora posjedovati barem jedno slovo!";
+        $errors[] = "Korisničko ime smije sadržavati slova, brojke i _,- te mora posjedovati barem jedno slovo!";
         return false;
     }
     return true;
 }
 
 function validate_passwords(string $pass1, string $pass2, ?array &$errors): bool{
-    if(mb_strlen($pass1) < 12){
-        $errors[] = "Lozinka mora sadrzavati barem 12 znakova!";
+    $regex = "/^(?=.*\d).{12,}$/u";
+    if((bool)preg_match($regex, $pass1) === false){
+        $errors[] = "Lozinka mora sadržavati barem 12 znakova i barem jedan od tih znakova mora biti broj!";
         return false;
     }else if($pass1 !== $pass2){
         $errors[] = "Lozinke nisu iste!";
@@ -46,7 +47,7 @@ function validate_passwords(string $pass1, string $pass2, ?array &$errors): bool
 
 function username_taken(string $username, UserRepository $userRepository, ?array &$errors): bool{
     if($userRepository->findByUsername($username) !== null){
-        $errors[] = "Korisnicko ime vec postoji!";
+        $errors[] = "Korisničko ime već postoji!";
         return true;
     }
     return false;

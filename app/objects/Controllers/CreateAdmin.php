@@ -63,11 +63,11 @@ class CreateAdmin implements Controller{
         try{
             $this->adminRepository->persist($admin);
         }catch(DuplicateEntryException $e){
-            $this->cookieHandler->setCookie('errors', 10, 'Korisnicko ime vec postoji!');
+            $this->cookieHandler->setCookie('errors', 10, 'Korisničko ime već postoji!');
             return new RedirectResponse('?controller=createAdmin');
         }
         
-        $this->cookieHandler->setCookie('messages', 10, 'Administrator uspjesno dodan!');
+        $this->cookieHandler->setCookie('messages', 10, 'Administrator uspješno dodan!');
         return new RedirectResponse('?controller=createAdmin');
     }
 }

@@ -57,6 +57,12 @@ function createActivity($owner_id, $object_id){
         return;
     }
 
+    if($response['average_speed'] === null || $response['average_speed'] < 3 && $response['average_speed'] > 30){
+        $speed = $response['average_speed'] ?? "NULL";
+        echo "Average speed is either null or is not in [3, 30] km/h interval! - Speed: $speed\n";
+        return;
+    }
+
     try{
         $start_time = strtotime($response['start_date']);
         $end_time = $start_time + $response['elapsed_time'];
@@ -71,11 +77,12 @@ function createActivity($owner_id, $object_id){
         // calculate distance from organization if organization is set
         if($org !== null){
             $orgPoint = new Point($org->longitude(), $org->latitude());
-            if(Point::distance($point, $orgPoint) < 200){
-                echo "Distance from organization is less than 200m!\n";
+            $distance = Point::distance($point, $orgPoint);
+            if($distance < 200){
+                echo "Distance from organization is less than 200m! - $distance m\n";
                 $organization_id = $org->id();
             }else{
-                echo "Distance from organization is greater than 200m!\n";
+                echo "Distance from organization is greater than 200m! - $distance m\n";
                 $organization_id = null;
             }
         }else{

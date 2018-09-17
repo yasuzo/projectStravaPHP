@@ -16,7 +16,7 @@
 
             <ul class="right hide-on-med-and-down">
                 <li><a href="?controller=index">Rang lista</a></li>
-                <li><a href="?controller=members">Clanovi</a></li>
+                <li><a href="?controller=members">Članovi</a></li>
                 <li><a href="?controller=organizationSettings">Organizacija</a></li>
                 <li><a href="?controller=settings"><i class="material-icons">settings</i></a></li>
                 <!-- Dropdown Trigger -->
@@ -25,7 +25,7 @@
 
             <ul class="side-nav" id="mobile">
                 <li><a href="?controller=index">Rang lista</a></li>
-                <li><a href="?controller=members">Clanovi</a></li>
+                <li><a href="?controller=members">Članovi</a></li>
                 <li><a href="?controller=settings"><i class="material-icons">settings</i></a></li>
                 <li><div class="divider"></div></li>
                 <li><a href="#" onclick="$('#logout_form').submit()">Odjava</a></li>

@@ -34,7 +34,7 @@ class ShowMembers implements Controller{
         $content = $this->templatingEngine->render(
             'layouts/layout_main.php', 
             [ 
-                'title' => 'Clanovi organizacije',
+                'title' => 'Članovi organizacije',
                 'authorizationLevel' => $this->firewall->getAuthorizationLevel(),
                 'body' => $this->templatingEngine->render('templates/organization_members.php', [
                     'users' => $users

@@ -94,7 +94,7 @@ class StravaAuth{
 
         // new users redirects to the settings for username setup and old users to the index page
         if(@$isUserNew === true){
-            $this->cookieHandler->setCookie('messages', 10, "Da biste se nalazili na rang listi, molimo odaberite organizaciju i vlastito korisnicko ime koje ce biti prikazano na rang listi.");
+            $this->cookieHandler->setCookie('messages', 10, "Da biste se nalazili na rang listi, molimo odaberite organizaciju i vlastito korisničko ime koje će biti prikazano na rang listi.");
             return new RedirectResponse('?controller=userSettings');
         }else{
             return new RedirectResponse('?controller=index');

@@ -1,10 +1,10 @@
 <div class="container">
     <ul class="collection with-header">
-        <li class="collection-header"><h4>Clanovi</h4></li>
+        <li class="collection-header"><h4>Članovi</h4></li>
 
         <?php if(empty($users) === true): ?>
             <li class="collection-item">
-                <div class="center">Nema clanova.</div>
+                <div class="center">Nema članova.</div>
             </li>
         <?php endif; ?>
 

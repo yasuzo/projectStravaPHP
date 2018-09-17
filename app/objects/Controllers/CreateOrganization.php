@@ -45,10 +45,10 @@ class CreateOrganization implements Controller{
         try{
             $point = new Point($longitude, $latitude);
         }catch(DomainException $e){
-            $this->cookieHandler->setCookie('errors', 10, 'Geografska sirina mora biti u intervalu [-90, 90], a duzina u intervalu od [-180, 180].');
+            $this->cookieHandler->setCookie('errors', 10, 'Geografska širina mora biti u intervalu [-90, 90], a dužina u intervalu od [-180, 180].');
             return new RedirectResponse('?controller=createOrganization');
         }catch(InvalidArgumentException $e){
-            $this->cookieHandler->setCookie('errors', 10, 'Geografska sirina i duzina mora biti broj!');
+            $this->cookieHandler->setCookie('errors', 10, 'Geografska širina i dužina mora biti broj!');
             return new RedirectResponse('?controller=createOrganization');
         }
 
@@ -58,12 +58,12 @@ class CreateOrganization implements Controller{
         try{
             $this->organizationRepository->persist($organization);
         }catch(DuplicateEntryException $e){
-            $this->cookieHandler->setCookie('errors', 10, 'Naziv je vec zauzet!');
+            $this->cookieHandler->setCookie('errors', 10, 'Naziv je već zauzet!');
             return new RedirectResponse('?controller=createOrganization');
         }
         
         // success
-        $this->cookieHandler->setCookie('messages', 10, 'Organizacija uspjesno dodana!');
+        $this->cookieHandler->setCookie('messages', 10, 'Organizacija uspješno dodana!');
         return new RedirectResponse('?controller=createOrganization');
     }
 }

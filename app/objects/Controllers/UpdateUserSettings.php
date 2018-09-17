@@ -64,9 +64,9 @@ class UpdateUserSettings implements Controller{
 
         try{
             $this->userRepository->update($user);
-            $this->cookieHandler->setCookie('messages', 10, 'Postavke spremljene!');
+            $this->cookieHandler->setCookie('messages', 10, 'Postavke uspješno spremljene!');
         }catch(DuplicateEntryException $e){
-            $this->cookieHandler->setCookie('errors', 10, 'Korisnicko ime je zauzeto!');
+            $this->cookieHandler->setCookie('errors', 10, 'Korisničko ime je zauzeto!');
         }
 
         return new RedirectResponse('?controller=userSettings');
