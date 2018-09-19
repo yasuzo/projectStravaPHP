@@ -60,10 +60,11 @@
             }).fitBounds(coordinates_<?= safe($activity['id']); ?>);
 
             L.tileLayer(
-                'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 18,
                 }).addTo(map_<?= safe($activity['id']); ?>);
-            L.polyline(
+
+            polyline_<?= safe($activity['id']); ?> = L.polyline(
                 coordinates_<?= safe($activity['id']); ?>,
                 {
                     color: 'red',
@@ -71,6 +72,14 @@
                     opacity: .8,
                     lineJoin: 'round'
                 }
-            ).addTo(map_<?= safe($activity['id']); ?>);
+            );
+
+            polyline_<?= safe($activity['id']); ?>.addTo(map_<?= safe($activity['id']); ?>);
+            
+            let end_latlng_<?= safe($activity['id']); ?> = [<?= $activity['latitude'] / 100000?>, <?= $activity['longitude'] / 100000 ?>];
+            let endPoint_<?= safe($activity['id']); ?> = L.point(end_latlng_<?= safe($activity['id']); ?>[0], end_latlng_<?= safe($activity['id']); ?>[1]);
+
+            L.marker([endPoint_<?= safe($activity['id']); ?>.x, endPoint_<?= safe($activity['id']); ?>.y], {title: "Kraj puta"}).addTo(map_<?= safe($activity['id']); ?>);
+            // L.circle([endPoint_<?= safe($activity['id']); ?>.x, endPoint_<?= safe($activity['id']); ?>.y], 200).addTo(map_<?= safe($activity['id']); ?>)
         </script>
 <?php endforeach; ?>
