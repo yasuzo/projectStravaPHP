@@ -39,7 +39,7 @@ SQL;
      */
     public function findByTrackingId(string $tracking_id): Activity{
         $query = <<<SQL
-        select id, type, duration, polyline, latitude/100000 latitude, longitude/100000 longitude, started_at, ended_at, tracking_id, user_id 
+        select id, type, duration, polyline, ROUND(latitude/100000, 5) latitude, ROUND(longitude/100000, 5) longitude, started_at, ended_at, tracking_id, user_id 
         from activities
         where tracking_id=:tracking_id;
 SQL;

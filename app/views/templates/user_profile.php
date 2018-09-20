@@ -60,7 +60,7 @@
             }).fitBounds(coordinates_<?= safe($activity['id']); ?>);
 
             L.tileLayer(
-                'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 18,
                 }).addTo(map_<?= safe($activity['id']); ?>);
             L.polyline(
