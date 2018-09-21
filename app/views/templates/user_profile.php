@@ -68,18 +68,17 @@
                 coordinates_<?= safe($activity['id']); ?>,
                 {
                     color: 'red',
-                    weight: 5,
+                    weight: 3.5,
                     opacity: .8,
-                    lineJoin: 'round'
+                    lineCap: 'butt'
                 }
             );
 
             polyline_<?= safe($activity['id']); ?>.addTo(map_<?= safe($activity['id']); ?>);
             
             let end_latlng_<?= safe($activity['id']); ?> = [<?= $activity['latitude'] / 100000?>, <?= $activity['longitude'] / 100000 ?>];
-            let endPoint_<?= safe($activity['id']); ?> = L.point(end_latlng_<?= safe($activity['id']); ?>[0], end_latlng_<?= safe($activity['id']); ?>[1]);
 
-            L.marker([endPoint_<?= safe($activity['id']); ?>.x, endPoint_<?= safe($activity['id']); ?>.y], {title: "Kraj puta"}).addTo(map_<?= safe($activity['id']); ?>);
-            // L.circle([endPoint_<?= safe($activity['id']); ?>.x, endPoint_<?= safe($activity['id']); ?>.y], 200).addTo(map_<?= safe($activity['id']); ?>)
+            L.circleMarker(end_latlng_<?= safe($activity['id']); ?>, {radius: 6, fillOpacity: 1, fillColor: '#ff9800', color: 'black', weight: 1.5}).addTo(map_<?= safe($activity['id']); ?>);
+
         </script>
 <?php endforeach; ?>
