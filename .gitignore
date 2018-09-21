@@ -1,3 +1,4 @@
 app/*_config.php
 app/*_config.txt
 .htaccess
+tests

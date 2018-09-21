@@ -56,7 +56,7 @@ SQL;
      */
     public function findByName(string $name): Organization{
         $query = <<<SQL
-        select id, name, longitude/100000 longitude, latitude/100000 latitude from organizations
+        select id, name, ROUND(longitude/100000, 5) longitude, ROUND(latitude/100000, 5) latitude from organizations
         where name=:name;
 SQL;
         $query = $this->db->prepare($query);
@@ -85,7 +85,7 @@ SQL;
      */
     public function findById($id): Organization{
         $query = <<<SQL
-        select id, name, longitude/100000 longitude, latitude/100000 latitude
+        select id, name, ROUND(longitude/100000, 5) longitude, ROUND(latitude/100000, 5) latitude
         from organizations
         where id=:id;
 SQL;
@@ -113,7 +113,7 @@ SQL;
      */
     public function findAll(): array{
         $query = <<<SQL
-        select id, name, longitude/100000 longitude, latitude/100000 latitude 
+        select id, name, ROUND(longitude/100000, 5) longitude, ROUND(latitude/100000, 5) latitude 
         from organizations
         order by name;
 SQL;
