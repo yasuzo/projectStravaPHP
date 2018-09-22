@@ -424,7 +424,7 @@ $router->addMatch(
     'GET',
     'profile',
     [
-        new ShowUserProfile($templatingEngine, $session, $firewall, $activityRepository),
+        new ShowUserProfile($templatingEngine, $session, $firewall, $activityRepository, $organizationRepository, $userRepository),
         'handle'
     ],
     [

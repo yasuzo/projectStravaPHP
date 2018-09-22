@@ -78,7 +78,12 @@
             
             let end_latlng_<?= safe($activity['id']); ?> = [<?= $activity['latitude'] / 100000?>, <?= $activity['longitude'] / 100000 ?>];
 
-            L.circleMarker(end_latlng_<?= safe($activity['id']); ?>, {radius: 6, fillOpacity: 1, fillColor: '#ff9800', color: 'black', weight: 1.5}).addTo(map_<?= safe($activity['id']); ?>);
+            L.circleMarker(end_latlng_<?= safe($activity['id']); ?>, {radius: 6, fillOpacity: 1, fillColor: 'white', color: '#F00', weight: 1.5}).addTo(map_<?= safe($activity['id']); ?>);
+            
+            <?php if($organization !== null): ?>
+                L.circle([<?= $organization->latitude() ?>, <?= $organization->longitude() ?>], 50).addTo(map_<?= safe($activity['id']); ?>);
+                L.marker([<?= $organization->latitude() ?>, <?= $organization->longitude() ?>], {title: "Odabrana organizacija"}).addTo(map_<?= safe($activity['id']); ?>);
+            <?php endif; ?>
 
         </script>
 <?php endforeach; ?>
