@@ -9,8 +9,6 @@ use Services\{Templating, Session, Firewall};
 
 use Services\Repositories\{ActivityRepository, OrganizationRepository, UserRepository};
 
-use ResourceNotFoundException;
-
 /**
  * Used to list all logged user's activities
  */
