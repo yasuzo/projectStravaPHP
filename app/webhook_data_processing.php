@@ -78,11 +78,11 @@ function createActivity($owner_id, $object_id){
         if($org !== null){
             $orgPoint = new Point($org->longitude(), $org->latitude());
             $distance = Point::distance($point, $orgPoint);
-            if($distance < 50){
-                echo "Distance from organization is less than 50m! - $distance m\n";
+            if($distance < 100){
+                echo "Distance from organization is less than 100m! - $distance m\n";
                 $organization_id = $org->id();
             }else{
-                echo "Distance from organization is greater than 50m! - $distance m\n";
+                echo "Distance from organization is greater than 100m! - $distance m\n";
                 $organization_id = null;
             }
         }else{

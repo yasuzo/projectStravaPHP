@@ -82,7 +82,7 @@
         }
     ).addTo(map);
 
-    var circle = L.circle(coordinates, 50);
+    var circle = L.circle(coordinates, 100);
     circle.addTo(map);
     var marker = L.marker(coordinates, {title: "Organizacija", draggable: true});
     marker.addTo(map);

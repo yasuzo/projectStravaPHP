@@ -81,7 +81,7 @@
             L.circleMarker(end_latlng_<?= safe($activity['id']); ?>, {radius: 6, fillOpacity: 1, fillColor: 'white', color: '#F00', weight: 1.5}).addTo(map_<?= safe($activity['id']); ?>);
             
             <?php if($organization !== null): ?>
-                L.circle([<?= $organization->latitude() ?>, <?= $organization->longitude() ?>], 50).addTo(map_<?= safe($activity['id']); ?>);
+                L.circle([<?= $organization->latitude() ?>, <?= $organization->longitude() ?>], 100).addTo(map_<?= safe($activity['id']); ?>);
                 L.marker([<?= $organization->latitude() ?>, <?= $organization->longitude() ?>], {title: "Odabrana organizacija"}).addTo(map_<?= safe($activity['id']); ?>);
             <?php endif; ?>
 
