@@ -40,7 +40,7 @@
 </navbar>
 
 <!-- Modal Structure -->
-<div id="guide" class="modal modal">
+<div id="guide" class="modal">
     <div class="modal-content">
         <h4>Upute</h4>
         <div class="divider"></div>
