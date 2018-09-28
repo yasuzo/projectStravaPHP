@@ -194,7 +194,7 @@ SQL;
             else 0
         end as banned
         from users
-        left join bans on users.organization_id=bans.organization_id
+        left join bans on users.id=bans.user_id
         where users.organization_id=:organization_id
         order by banned ASC, users.lastName ASC;
 SQL;
