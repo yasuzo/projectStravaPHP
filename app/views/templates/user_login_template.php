@@ -4,7 +4,7 @@
         Prijavite se sa svojim Strava računom!
     </p>
     <a href="https://www.strava.com/oauth/authorize?client_id=20070&redirect_uri=<?= AUTH_CALLBACK_DOMAIN ?>/?controller=performStravaAuth&response_type=code&approval_prompt=auto&scope=view_private" id="connect-with-strava"><img src="connect_with_strava.png"></a>
-    <div><small class="white-text">Prijavom protvrđujete da ste pročitali i razumjeli informacije navedene <a class="orange-text text-lighten-3 modal-trigger" href="#terms">ovdje</a>.</small></div>
+    <div><small class="white-text">Prijavom potvrđujete da ste pročitali i razumjeli informacije navedene <a class="orange-text text-lighten-3 modal-trigger" href="#terms">ovdje</a>.</small></div>
     <div class="container z-depth-1 white darken-1 upute">
         <strong>**Upute za korištenje
         <ol>

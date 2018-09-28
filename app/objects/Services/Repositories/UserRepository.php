@@ -214,7 +214,7 @@ SQL;
         $query = <<<SQL
         select users.id, users.firstName, users.lastName, users.username, count(case when activities.organization_id=users.organization_id then 1 end) count
         from users
-        left join bans on users.organization_id=bans.organization_id
+        left join bans on users.id=bans.user_id
         left join activities on users.id=activities.user_id
         where users.organization_id=:organization_id and bans.id is null
         group by users.id
@@ -236,7 +236,7 @@ SQL;
         $query = <<<SQL
         select users.id, users.firstName, users.lastName, users.username, coalesce(sum(case when activities.organization_id=users.organization_id then activities.distance else 0 end), 0) distance
         from users
-        left join bans on users.organization_id=bans.organization_id
+        left join bans on users.id=bans.user_id
         left join activities on users.id=activities.user_id
         where users.organization_id=:organization_id and bans.id is null
         group by users.id
