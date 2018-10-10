@@ -1,43 +1,29 @@
-<div class="row">
-    <div class="col s12">
-        <ul class="tabs">
 
-            <li class="tab col s12"><a class="active" href="#activities">MOJE AKTIVNOSTI</a></li>
-        </ul>
+<div id="activities" class="container">
+    <h3 class="heading-text">Moje aktivnosti</h3>
+
+    <?php if(empty($activities) === true): ?>
+    <div class="z-depth-1 blue-grey lighten-5 no-activities-found">
+        <p><strong>Nema aktivnosti!</strong></p>
     </div>
-    <div id="activities" class="col s12">
+    <?php endif; ?>
 
-        <?php if(empty($activities) === true): ?>
-        <div class="container z-depth-1 blue-grey lighten-5 no-activities-found" style="padding-top: 1em; padding-bottom: 1em; text-align:center; margin-top: 1em; margin-bottom: 1em;">
-            <strong>Nema aktivnosti!</strong>
+    <?php foreach($activities as $activity): ?>
+    <div class="z-depth-1 blue-grey lighten-5 activity">
+        <div class="activity-heading">
+            <small><?= date('d.m.Y', strtotime($activity['ended_at'])); ?> @</small>
+            <h5 class="subheading-text"><?= date('H:i', strtotime($activity['ended_at'])); ?>h</h5>
         </div>
-        <?php endif; ?>
-
-        <?php foreach($activities as $activity): ?>
-        <div class="container z-depth-1 blue-grey lighten-5 activity" style="margin-top: 1em;">
-            <small>&nbsp;<?= date('d.m.Y', strtotime($activity['ended_at'])); ?> @</small>
-            <h5><?= date('H:i', strtotime($activity['ended_at'])); ?>h</h5>
-            <hr>
-            <div class="row">
-                <div class="col s12" style="margin-top: -0.5em">
-                    <div id="map_<?= safe($activity['id']); ?>" style="height: 20em; self-align: center; background-color:rgba(10, 211, 151, 0.179); width: 100%"></div>
-                </div>
-                <div class="col s12" style="margin-top: -0.5em;">
-                    <hr>
-                </div>
-                <div class="col s12">
-                    <table class="activity-card-table">
-                        <tr>
-                            <td>Trajanje:<br><strong><b><?= formatDuration($activity['duration']); ?></b></strong></td>
-                            <td style="border-left: 1px solid rgba(121, 121, 121, 0.789);">Prijeđena udaljenost:<br><strong><b><?= safe($activity['distance'] / 1000); ?>&nbsp;km</b></strong></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <?php endforeach; ?>
-
+        <div id="map_<?= safe($activity['id']); ?>" class="map"></div>
+        <table>
+            <tr>
+                <td>Trajanje:<br><b class="subheading-text"><?= formatDuration($activity['duration']); ?></b></td>
+                <td>Prijeđena udaljenost:<br><b class="subheading-text"><?= safe($activity['distance'] / 1000); ?>&nbsp;km</b></td>
+            </tr>
+        </table>
     </div>
+    <?php endforeach; ?>
+
 </div>
 
 <!-- Leaflet skripta -> za mape -->

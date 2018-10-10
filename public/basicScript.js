@@ -1,6 +1,6 @@
 $(document).ready(() => {
 
-    // pick init
+    /* // pick init
     $('select').material_select();
 
     //hamburger button for navbar
@@ -12,5 +12,11 @@ $(document).ready(() => {
         indicators: false,
         height: 500
     });
+    $('.modal').modal(); */
+
+    $('.tabs').tabs();
+    $('.dropdown-trigger').dropdown();
+    $('.sidenav').sidenav();
     $('.modal').modal();
+    $('select').formSelect();
 });

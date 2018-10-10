@@ -1,7 +1,7 @@
 
 <div class="container">
 
-    <h3>Postavke</h3>
+    <h3 class="heading-text">Postavke</h3>
     <?php foreach($errors as $error): ?>
         <a class="red-text"><?= safe($error); ?></a><br>
     <?php endforeach; ?>
@@ -10,8 +10,8 @@
         <a class="green-text"><?= safe($message); ?></a><br>
     <?php endforeach; ?>
 
-    <div class="row">
-        <form id="settings_form" class="col s12 white" method="post" action="?controller=userSettings">
+    <div>
+        <form id="settings_form" class="white" method="post" action="?controller=userSettings">
             <div class="row">
                 <div class="input-field col l4 s12">
                     <input id="firstName" name="firstName" type="text" class="validate" maxlength="25" value="<?= safe($user->firstName() ?? ''); ?>">
@@ -47,7 +47,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <a href="#" onclick="$('#settings_form').submit()" class="waves-effect waves-light btn orange">SPREMI</a>
+                    <a href="#" onclick="$('#settings_form').submit()" class="waves-effect waves-light btn button-safe">SPREMI</a>
                 </div>
             </div>
         </form>
@@ -56,7 +56,7 @@
     <form id="delete_form" method="post" action="?controller=userDelete">
         <div class="row">
             <div class="input-field col s12">
-                <a href="#" onclick="$('#delete_form').submit()" class="waves-effect waves-light btn red">Izbriši račun</a>
+                <a href="#" onclick="$('#delete_form').submit()" class="waves-effect waves-light btn button-danger">Izbriši račun</a>
             </div>
         </div>
     <form>

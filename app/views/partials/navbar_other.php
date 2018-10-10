@@ -1,15 +1,10 @@
 <nav>
-    <div class="nav-wrapper red">
-        <!-- <div class="container"> -->
-        <a href="?controller=index" class="brand-logo left">Ciklometar</a>
+    <div class="nav-wrapper">
+        <a href="?controller=index" class="brand-logo"><img src="navbar_logo.png" class="navbar-logo" alt="Ciklometar logo"></a>
 
-        <ul class="right hide-on-med-and-down">
-            <li><a href="?controller=login" class="waves-effect waves-light btn orange">PRIJAVA</a></li>
+        <ul class="right">
+            <li><a href="?controller=login" class="waves-effect waves-light btn button-safe">PRIJAVA</a></li>
         </ul>
-        
-        <ul class="right hide-on-large-only">
-            <li><a href="?controller=login" class="waves-effect waves-light btn orange">PRIJAVA</a></li>
-        </ul>
-        <!-- </div> -->
+    
     </div>
 </nav>

@@ -1,12 +1,166 @@
+:root{
+    --main-color: #A01958;
+    --subheading-color: #4C8E6F;
+    --content-color: #1B4A37;
+    --light-color: #FCDFD8;
+    --dark-color: #3A0043;
+}
+
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--content-color);
 }
 
 main {
     flex: 1 0 auto;
 }
+
+nav{
+    background-color: var(--light-color);
+}
+
+.no-activities-found{
+    text-align: center;
+}
+
+.no-activities-found *{
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.activity{
+    margin-top: 1em;
+}
+
+.activity .map div{
+    height: 25em;
+    width: 100%;
+}
+
+.activity h5{
+    margin-top: 0;
+    margin-bottom: 0.2em;
+    font-weight: bold;
+}
+
+.activity table{
+    table-layout: fixed;
+}
+
+.activity td:nth-child(2){
+    border-width: 0 0 0 1px;
+    border-style: solid;
+    border-color: var(--subheading-color);
+}
+
+.activity-heading{
+    margin-left: 0.4em;
+    margin-top: 1em;
+}
+
+footer{
+    margin-top: 2em;
+}
+
+footer > div.container > div.row > div.col{
+    padding-left: 0;
+}
+
+.button-safe, .button-safe:hover, .button-safe:focus{
+    background-color: var(--subheading-color);
+}
+
+.button-danger, .button-danger:hover, .button-danger:focus{
+    background-color: var(--dark-color);
+}
+
+nav > div > ul > li > a{
+    color: var(--main-color);
+}
+
+.modal ol{
+    padding-left: 1.2em;
+}
+
+img.navbar-logo{
+    margin-top: 0.1em;
+    width: 248px;
+    height: 56px;
+}
+
+/* Organization pick trigger */
+.btn.dropdown-trigger.dark-color:hover{
+    background-color: var(--main-color);
+}
+/* Organization pick trigger */
+.btn.dropdown-trigger.dark-color:focus{
+    background-color: var(--dark-color);
+}
+/* Organization picker */
+.dropdown-content > li > a {
+    color: var(--content-color);
+}
+
+.dark-color{
+    background-color: var(--dark-color);
+}
+
+.highlight-color{
+    background-color: var(--light-color);
+}
+
+.subheading-color{
+    background-color: var(--subheading-color);
+}
+
+.ranking-table{
+    table-layout: fixed;
+}
+
+.heading-text{
+    color: var(--main-color);
+    font-weight: bold; /* REMOVE IF NECESSARY */
+}
+
+.main-text{
+    color: var(--main-color);
+}
+
+.subheading-text{
+    color: var(--subheading-color);
+}
+
+.content-text{
+    color: var(--content-color);
+}
+
+.dark-text{
+    color: var(--dark-color);
+}
+
+
+.tabs .tab a{
+    color: var(--main-color);
+} /*Text color on tabs*/
+
+.tabs .tab a:hover {
+    background-color:rgba(0, 0, 0, 0);;
+    color: var(--main-color);
+} /*Text color on hover over tab*/
+
+.tabs .tab a.active {
+    background-color:rgba(0, 0, 0, 0);;
+    color:var(--main-color);
+} /*Background and text color when a tab is active*/
+
+.tabs .indicator {
+    background-color: var(--main-color);
+} /*Color of tab underline*/
+
+/*
 
 .card-image img{
     max-height: 40vh;
@@ -33,10 +187,6 @@ navbar{
     margin-left: 0.2em;
 }
 
-/* .activity-details-list li{
-    margin-bottom: 1em;
-} */
-
 .activity-card-table{
     table-layout: fixed;
 }
@@ -49,7 +199,6 @@ navbar{
 
 .login-card{
     margin-top: 5em;
-    /* height: 25em; */
     padding-bottom: 1em;
     border-radius: 0.15em;
 }
@@ -68,17 +217,6 @@ navbar{
     border-radius: 0.15em;
 }
 
-/* #connect-with-strava{
-    margin-top: 0.7em;
-    border-radius: 0.2em;
-    width: 193px;
-    height: 48px;
-    background: url('./connect_with_strava.png') no-repeat;
-    display: inline-block;
-    cursor:pointer;
-    border: none;
-} */
-
 .admin-login{
     border-radius: 0.15em;
 }
@@ -90,3 +228,5 @@ navbar{
 .no-activities-found{
     border-radius: 0.15em;
 }
+
+*/
