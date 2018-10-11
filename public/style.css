@@ -18,10 +18,6 @@ main {
     flex: 1 0 auto;
 }
 
-nav{
-    background-color: var(--light-color);
-}
-
 .no-activities-found{
     text-align: center;
 }
@@ -46,11 +42,14 @@ nav{
     font-weight: bold;
 }
 
-.activity table{
+.activity table, /* Stats of activity on user's profile */
+.ranking-table /* Ranking table */
+{
     table-layout: fixed;
 }
 
-.activity td:nth-child(2){
+.activity td:nth-child(2) /* second stat in an activity card */
+{
     border-width: 0 0 0 1px;
     border-style: solid;
     border-color: var(--subheading-color);
@@ -58,74 +57,72 @@ nav{
 
 .activity-heading{
     margin-left: 0.4em;
-    margin-top: 1em;
+    height: 4em;
 }
 
 footer{
     margin-top: 2em;
 }
 
-footer > div.container > div.row > div.col{
+footer > div.container > div.row > div.col /* Columns in footer */
+{
     padding-left: 0;
 }
 
-.button-safe, .button-safe:hover, .button-safe:focus{
-    background-color: var(--subheading-color);
-}
-
-.button-danger, .button-danger:hover, .button-danger:focus{
-    background-color: var(--dark-color);
-}
-
-nav > div > ul > li > a{
-    color: var(--main-color);
-}
-
-.modal ol{
+.modal ol /* Ordered list in modals */
+{
     padding-left: 1.2em;
 }
 
-img.navbar-logo{
+img.navbar-logo /* Navbar logo image */
+{
     margin-top: 0.1em;
-    width: 248px;
-    height: 56px;
+    max-width: 248px;
+    max-height: 56px;
+}
+
+@media (max-width:600px){
+    img.navbar-logo /* Navbar logo image */
+    {
+        margin-top: 0.1em;
+        max-width: 212.6px;
+        max-height: 48px;
+    }
 }
 
 /* Organization pick trigger */
 .btn.dropdown-trigger.dark-color:hover{
     background-color: var(--main-color);
 }
-/* Organization pick trigger */
-.btn.dropdown-trigger.dark-color:focus{
-    background-color: var(--dark-color);
-}
-/* Organization picker */
-.dropdown-content > li > a {
-    color: var(--content-color);
-}
 
-.dark-color{
+.dark-color,
+.button-danger, .button-danger:hover, .button-danger:focus, /* Button danger */
+.btn.dropdown-trigger.dark-color:focus /* Organization pick trigger */
+{
     background-color: var(--dark-color);
 }
 
-.highlight-color{
+.highlight-color,
+nav /* Navbar */
+{
     background-color: var(--light-color);
 }
 
-.subheading-color{
+.subheading-color,
+.button-safe, .button-safe:hover, .button-safe:focus /* Button safe */
+{
     background-color: var(--subheading-color);
-}
-
-.ranking-table{
-    table-layout: fixed;
 }
 
 .heading-text{
     color: var(--main-color);
-    font-weight: bold; /* REMOVE IF NECESSARY */
+    font-weight: bold;
 }
 
-.main-text{
+.main-text,
+.tabs .tab a, /* Text color on tabs*/
+nav > div > ul > li > a /* Links on navbar */
+{
     color: var(--main-color);
 }
 
@@ -133,7 +130,9 @@ img.navbar-logo{
     color: var(--subheading-color);
 }
 
-.content-text{
+.content-text,
+.dropdown-content > li > a /* Dropdown content text color */
+{
     color: var(--content-color);
 }
 
@@ -141,92 +140,20 @@ img.navbar-logo{
     color: var(--dark-color);
 }
 
-
-.tabs .tab a{
-    color: var(--main-color);
-} /*Text color on tabs*/
+.tabs .tab a:focus.active{
+    background-color: transparent;
+} /* Tab color after press */
 
 .tabs .tab a:hover {
-    background-color:rgba(0, 0, 0, 0);;
+    background-color: transparent;
     color: var(--main-color);
 } /*Text color on hover over tab*/
 
 .tabs .tab a.active {
-    background-color:rgba(0, 0, 0, 0);;
+    background-color: transparent;
     color:var(--main-color);
 } /*Background and text color when a tab is active*/
 
 .tabs .indicator {
     background-color: var(--main-color);
 } /*Color of tab underline*/
-
-/*
-
-.card-image img{
-    max-height: 40vh;
-}
-
-navbar{
-    margin-bottom: 1em;
-}
-
-.activity{
-    border-radius: 0.45em;
-    min-height: 15em;
-}
-
-.activity h5{
-    margin-left: 0.3em;
-    padding-top: 0.3em;
-    color: rgb(65, 65, 64);
-    margin-top: -0.3em;
-    font-weight: bold;
-}
-
-.brand-logo{
-    margin-left: 0.2em;
-}
-
-.activity-card-table{
-    table-layout: fixed;
-}
-
-.activity-card-table td{
-    padding-top: 0;
-    padding-bottom: 0.6em;
-    width: 50%;
-}
-
-.login-card{
-    margin-top: 5em;
-    padding-bottom: 1em;
-    border-radius: 0.15em;
-}
-
-.organization-card{
-    height: 15em; 
-    margin: 0.5em 0.5em 0.5em 0.5em;
-    border-radius: 0.15em;
-}
-
-.upute{
-    text-align: left;
-    padding: 1em;
-    margin-top: 2em;
-    
-    border-radius: 0.15em;
-}
-
-.admin-login{
-    border-radius: 0.15em;
-}
-
-.admin-user-card{
-    border-radius: 0.15em;
-}
-
-.no-activities-found{
-    border-radius: 0.15em;
-}
-
-*/
