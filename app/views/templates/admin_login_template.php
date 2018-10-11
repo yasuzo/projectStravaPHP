@@ -1,7 +1,7 @@
-<div class="container z-depth-2 red login-card" style="text-align:center;">
-    <h3 class="white-text">Ciklometar</h3>
-    <p class="white-text">Admin</p>
-    <div class="container z-depth-2 white admin-login" style="text-align:center;padding:3em;">
+<div class="container z-depth-2 login-card">
+    <h1><a href="?controller=index" class="brand-logo"><img src="logo.png" class="responsive-img" alt="Ciklometar logo"></a></h1>
+    <p class="subheading-text">Admin</p>
+    <div class="container z-depth-2 admin-login">
 
     <?php foreach($errors as $err): ?>
         <p class="accent"><?= safe($err); ?></p>
@@ -22,7 +22,7 @@
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <a href="#" onclick="$(this).closest('form').submit()" class="waves-effect waves-light btn orange">PRIJAVA</a>
+                <a href="#" onclick="$(this).closest('form').submit()" class="waves-effect waves-light btn button-safe">PRIJAVA</a>
             </form>
         </div>
     </div>

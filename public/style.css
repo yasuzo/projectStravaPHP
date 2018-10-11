@@ -186,3 +186,9 @@ div.welcome-page  h4 /* headings on welcome page */
     margin-bottom: -0.2em;
 }
 
+div.admin-login /* Div that contains admin login form */
+{
+    padding-top: 3em;
+    text-align: center;
+}
+
