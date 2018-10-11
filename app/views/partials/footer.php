@@ -1,4 +1,4 @@
-<footer class="page-footer highlight-color main-text">
+<footer class="page-footer highlight-color">
     <div class="container">
         <div class="row">
             <div class="col l4 s12">
@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="footer-copyright">
-            <div class="container main-text">
+            <div class="container accent">
             Copyright © 2018 yasuzo
             </div>
     </div>

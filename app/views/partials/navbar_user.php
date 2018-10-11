@@ -1,7 +1,7 @@
 
 <nav>
     <div class="nav-wrapper">
-        <a href="?controller=index" class="brand-logo"><img src="navbar_logo.png" class="navbar-logo" alt="Ciklometar logo"></a>
+        <a href="?controller=index" class="brand-logo"><img src="logo.png" class="navbar-logo" alt="Ciklometar logo"></a>
         
         <a href="#" data-target="mobile" class="sidenav-trigger main-text"><i class="material-icons">menu</i></a>
 
@@ -48,7 +48,7 @@
             <li>Prilikom svakog odlaska prema svojoj organizaciji pokrenite Stravu.</li>
             <li>Snimajte aktivnost.</li>
             <li>Odaberite sport – bicikl.</li>
-            <li>Pritisnite <b class="main-text">Start</b></li>
+            <li>Pritisnite <b class="accent">Start</b></li>
             <li>Zaustavite aktivnost po dolasku na odredište. Vaš rezultat će se automatski upisati na rang listu vaše organizacije.</li>
         </ol>
     </div>

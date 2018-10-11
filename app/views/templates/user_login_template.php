@@ -1,20 +1,22 @@
-<div class="container z-depth-2 red login-card" style="text-align:center;">
-    <h3><a class="white-text" href="/">Ciklometar</a></h3>
-    <p class="white-text">
+<div class="container z-depth-2 login-card">
+    <h1><a href="?controller=index" class="brand-logo"><img src="logo.png" class="responsive-img" alt="Ciklometar logo"></a></h1>
+    <h6>
         Prijavite se sa svojim Strava računom!
-    </p>
+    </h6>
     <a href="https://www.strava.com/oauth/authorize?client_id=20070&redirect_uri=<?= AUTH_CALLBACK_DOMAIN ?>/?controller=performStravaAuth&response_type=code&approval_prompt=auto&scope=view_private" id="connect-with-strava"><img src="connect_with_strava.png"></a>
-    <div><small class="white-text">Prijavom potvrđujete da ste pročitali i razumjeli informacije navedene <a class="orange-text text-lighten-3 modal-trigger" href="#terms">ovdje</a>.</small></div>
-    <div class="container z-depth-1 white darken-1 upute">
-        <strong>**Upute za korištenje
+    <br>
+    <small>Prijavom potvrđujete da ste pročitali i razumjeli informacije navedene <a class="accent modal-trigger" href="#terms">ovdje</a>.</small>
+    <br>
+    <br>
+    <div class="container z-depth-1">
+        <h6 class="subheading-text"><b>Upute za korištenje</b></h6>
         <ol>
-            <li>Prilikom svakog odlaska prema svojoj organizaciji pokrenite <a class="orange-text" href="https://www.strava.com">Stravu.</a></li>
+            <li>Prilikom svakog odlaska prema svojoj organizaciji pokrenite <a class="accent" href="https://www.strava.com"><b>Stravu</b>.</a></li>
             <li>Snimajte aktivnost.</li>
             <li>Odaberite sport – bicikl.</li>
-            <li>Pritisnite <b class="orange-text">Start</b></li>
+            <li>Pritisnite <b class="accent">Start</b></li>
             <li>Zaustavite aktivnost po dolasku na odredište. Vaš rezultat će se automatski upisati na rang listu vaše organizacije.</li>
         </ol>
-        </strong>
     </div>
 </div>
 
@@ -38,6 +40,6 @@
         Imajući u vidu da je internet javno dostupna podatkovna mreža te da postoje osobe koje posjeduju takva stručna znanja i vještine pomoću kojih, usprkos sofisticiranim mjerama zaštite koje se primjenjuju, koristeći se internetom, kakvom drugom mrežom, uređajem ili resursom mogu izvršiti različite neovlaštene i protupravne radnje/djela u odnosu na internet stranicu, internet resurse objavljene na internet stranici, Ciklometar ne može jamčiti korisnicima sigurnost i funkcionalnost internet resursa, kao ni sigurnost i funkcionalnost internet stranice. Stoga, svaki korisnik koristi internet stranicu na svoju vlastitu odgovornost.</p>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Zatvori</a>
+        <a href="#!" class="modal-close waves-effect waves-purple btn-flat">Zatvori</a>
     </div>
 </div>

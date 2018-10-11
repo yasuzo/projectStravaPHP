@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container welcome-page">
     <h3>Dobrodošli na CIKLOMETAR!</h3>
     <div class="divider"></div>
     <div class="row section">
@@ -25,9 +25,9 @@
         <h4>Kako se priključiti?</h4>
             <p>U ovom trenutku aplikacija je u fazi testiranja i jedina moguća organizacija je <b>Osnovna Škola Vladimir Nazor.</b></p>
             <ol style="padding-left: 1.2em;">
-                <li>Ukoliko još nemate, instalirajte mobilnu aplikaciju <b class="orange-text">Strava</b> na svoj telefon. Možete ju pronaći u trgovini aplikacijama na vašem telefonu. Potpuno je besplatna za osnovno korištenje, što je i dovoljno za ovu namjenu. Zapamtite podatke s kojima se registrirate (Moguće je koristiti Facebook ili Google račun)</li>
-                <li>Na ovoj web stranici (ciklometar.krizevci.hr) idite na <b><a class="orange-text" href="?controller=login">Prijava</a></b></li>
-                <li>Pritisnite <b class="orange-text">Connect with STRAVA</b></li>
+                <li>Ukoliko još nemate, instalirajte mobilnu aplikaciju <b class="accent">Strava</b> na svoj telefon. Možete ju pronaći u trgovini aplikacijama na vašem telefonu. Potpuno je besplatna za osnovno korištenje, što je i dovoljno za ovu namjenu. Zapamtite podatke s kojima se registrirate (Moguće je koristiti Facebook ili Google račun)</li>
+                <li>Na ovoj web stranici (ciklometar.krizevci.hr) idite na <b><a class="accent" href="?controller=login">Prijava</a></b></li>
+                <li>Pritisnite <b class="accent">Connect with STRAVA</b></li>
                 <li>Na sljedećem ekranu prijavite se u Stravu.</li>
                 <li>Odobrite aplikaciju Ciklometar u Stravi.</li>
                 <li>Popunite korisničke podatke, odaberite organizaciju i spremite postavke.</li>
@@ -41,7 +41,7 @@
                 <li>Prilikom svakog odlaska prema svojoj organizaciji pokrenite Stravu.</li>
                 <li>Snimajte aktivnost.</li>
                 <li>Odaberite sport – bicikl.</li>
-                <li>Pritisnite <b class="orange-text">Start</b></li>
+                <li>Pritisnite <b class="accent">Start</b></li>
                 <li>Zaustavite aktivnost po dolasku na odredište. Vaš rezultat će se automatski upisati na rang listu vaše organizacije.</li>
             </ol>
         </div>

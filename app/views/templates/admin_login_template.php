@@ -4,7 +4,7 @@
     <div class="container z-depth-2 white admin-login" style="text-align:center;padding:3em;">
 
     <?php foreach($errors as $err): ?>
-        <p class="orange-text"><?= safe($err); ?></p>
+        <p class="accent"><?= safe($err); ?></p>
     <?php endforeach; ?>
 
 

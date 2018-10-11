@@ -69,7 +69,8 @@ footer > div.container > div.row > div.col /* Columns in footer */
     padding-left: 0;
 }
 
-.modal ol /* Ordered list in modals */
+.modal ol, /* Ordered list in modals */
+.login-card ol /* Ordered list on login card */
 {
     padding-left: 1.2em;
 }
@@ -114,20 +115,26 @@ nav /* Navbar */
     background-color: var(--subheading-color);
 }
 
-.heading-text{
+.heading-text,
+h1, h2, h3, h4, h5, h6
+{
     color: var(--main-color);
     font-weight: bold;
 }
 
 .main-text,
+.accent, /* Accents in text */
 .tabs .tab a, /* Text color on tabs*/
 nav > div > ul > li > a /* Links on navbar */
 {
     color: var(--main-color);
 }
 
-.subheading-text{
+.subheading-text,
+div.welcome-page  h4 /* headings on welcome page */
+{
     color: var(--subheading-color);
+    font-weight: normal; /* QUESTIONABLE */
 }
 
 .content-text,
@@ -157,3 +164,25 @@ nav > div > ul > li > a /* Links on navbar */
 .tabs .indicator {
     background-color: var(--main-color);
 } /*Color of tab underline*/
+
+.login-card{
+    text-align: center;
+    background-color: var(--light-color);
+    margin-top: 3em;
+    padding: 1em;
+}
+
+.login-card div{
+    border-radius: 0.2em;
+}
+
+.login-card > div{
+    text-align: left;
+    background-color: white;
+    padding: 1em 1em 0.5em 1em;
+}
+
+.login-card > h1{
+    margin-bottom: -0.2em;
+}
+
