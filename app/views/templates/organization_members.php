@@ -11,7 +11,7 @@
         <?php foreach($users as $user): ?>
             <li class="collection-item avatar">
                 <img src="<?= safe($user['picture_url']); ?>" alt="" class="circle">
-                <span class="title"><b><?= safe($user['lastName']); ?>,&nbsp;<?= safe($user['firstName']); ?></b></span>
+                <span class="title subheading-text"><b><?= safe($user['lastName']); ?>,&nbsp;<?= safe($user['firstName']); ?></b></span>
                 <p>
                     <?= safe($user['username']); ?>
                 </p>
@@ -25,9 +25,9 @@
                     <?php endif; ?>
                 </form>
                 <?php if($user['banned'] == 0): ?>
-                    <a id="<?= safe($user['id']); ?>" href="#" onclick="$('#form_<?= safe($user['id']); ?>').submit()" class="waves-effect waves-light btn red secondary-content">Zabrani</a>
+                    <a id="<?= safe($user['id']); ?>" href="#" onclick="$('#form_<?= safe($user['id']); ?>').submit()" class="waves-effect waves-light btn button-danger secondary-content">Zabrani</a>
                 <?php else: ?>
-                    <a id="<?= safe($user['id']); ?>" href="#" onclick="$('#form_<?= safe($user['id']); ?>').submit()" class="waves-effect waves-light btn green secondary-content">Dozvoli</a>
+                    <a id="<?= safe($user['id']); ?>" href="#" onclick="$('#form_<?= safe($user['id']); ?>').submit()" class="waves-effect waves-light btn button-safe secondary-content">Dozvoli</a>
                 <?php endif; ?>
             </li>
         <?php endforeach; ?>

@@ -6,7 +6,7 @@
 
     <div class="row">
         <ul class="collection with-header" style="padding-bottom: 1.5em;">
-            <li class="collection-header"><h5>Postavke korisnickog imena</h5></li>
+            <li class="collection-header"><h5 class="subheading-text">Postavke korisničkog imena</h5></li>
             
             <li class="collection-item">
 
@@ -32,7 +32,7 @@
                         </div>
                     </div>
 
-                    <a href="#" onclick="$('#update_username').submit()" class="waves-effect waves-light btn orange">Promijeni</a>
+                    <a href="#" onclick="$('#update_username').submit()" class="waves-effect waves-light btn button-safe">Promijeni</a>
                 </form>
             </li>
         </ul>
@@ -41,7 +41,7 @@
     <div class="row">
 
         <ul class="collection with-header" style="padding-bottom: 1.5em;">
-            <li class="collection-header"><h5>Promjena lozinke</h5></li>
+            <li class="collection-header"><h5 class="subheading-text">Promjena lozinke</h5></li>
             
             <li class="collection-item">
 
@@ -73,7 +73,7 @@
                         </div>
                     </div>
 
-                    <a href="#" onclick="$('#update_password').submit()" class="waves-effect waves-light btn orange">Promijeni</a>
+                    <a href="#" onclick="$('#update_password').submit()" class="waves-effect waves-light btn button-safe">Promijeni</a>
                 </form>
             </li>
         </ul>

@@ -192,3 +192,18 @@ div.admin-login /* Div that contains admin login form */
     text-align: center;
 }
 
+.organization-placement div#map /* Organization placement map */
+{
+    height: 35em;
+}
+
+.organization-placement div.modal-content /* Organization placement div that contains map for placement */
+{
+    padding: 0;
+}
+
+form#update_organization > div > div /* Organization settings form */
+{
+    margin-left: 0;
+}
+

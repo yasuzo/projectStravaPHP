@@ -13,9 +13,9 @@
     <!-- TAB No. 1 -->
     <div id="test1" class="col s12">
         <!-- TABLE No. 1 -->
-        <table class="striped centered">
+        <table class="striped centered ranking-table">
             <thead>
-                <tr>
+                <tr class="subheading-text">
                     <th>Plasman</th>
                     <th>Korisničko ime</th>
                     <th>Kilometri</th>
@@ -44,9 +44,9 @@
     <!-- TAB No. 2 -->
     <div id="test2" class="col s12">
         <!-- TABLE No. 2 -->
-        <table class="striped centered">
+        <table class="striped centered ranking-table">
             <thead>
-                <tr>
+                <tr class="subheading-text">
                     <th>Plasman</th>
                     <th>Korisničko ime</th>
                     <th>Dolasci</th>
