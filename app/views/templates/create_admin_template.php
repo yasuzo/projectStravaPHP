@@ -22,15 +22,15 @@
             <!-- password -->
             <div class="row">
                 <div class="input-field col l6 s12">
-                    <input id="password" name="password1" type="password" class="validate">
-                    <label for="password">Lozinka</label>
+                    <input id="password1" name="password1" type="password" class="validate">
+                    <label for="password1">Lozinka</label>
                 </div>
             </div>
             <!-- password repeat -->
             <div class="row">
                 <div class="input-field col l6 s12">
-                    <input id="password" name="password2" type="password" class="validate">
-                    <label for="password">Ponovite lozinku</label>
+                    <input id="password2" name="password2" type="password" class="validate">
+                    <label for="password2">Ponovite lozinku</label>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <a href="#" onclick="$(this).closest('form').submit()" class="waves-effect waves-light btn orange">Stvori</a>
+            <a href="#" onclick="$(this).closest('form').submit()" class="waves-effect waves-light btn button-safe">Stvori</a>
         </form>
     </div>
 </div>

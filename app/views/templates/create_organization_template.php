@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-            <a href="#" onclick="$('#create_organization').submit()" class="waves-effect waves-light btn orange">Stvori</a>
+            <a href="#" onclick="$('#create_organization').submit()" class="waves-effect waves-light btn button-safe">Stvori</a>
         </form>
     </div>
 </div>

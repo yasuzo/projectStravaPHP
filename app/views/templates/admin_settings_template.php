@@ -53,23 +53,23 @@
                     <!-- password -->
                     <div class="row">
                         <div class="input-field col l6 s12">
-                            <input id="password" name="newPassword1" type="password" class="validate">
-                            <label for="password">Nova lozinka</label>
+                            <input id="password1" name="newPassword1" type="password" class="validate">
+                            <label for="password1">Nova lozinka</label>
                         </div>
                     </div>
                     <!-- password repeat -->
                     <div class="row">
                         <div class="input-field col l6 s12">
-                            <input id="password" name="newPassword2" type="password" class="validate">
-                            <label for="password">Ponovite novu lozinku</label>
+                            <input id="password2" name="newPassword2" type="password" class="validate">
+                            <label for="password2">Ponovite novu lozinku</label>
                         </div>
                     </div>
 
                     <!-- password -->
                     <div class="row">
                         <div class="input-field col l6 s12">
-                            <input id="password" name="password" type="password" class="validate">
-                            <label for="password">Unesite staru lozinku za potvrdu</label>
+                            <input id="password3" name="password" type="password" class="validate">
+                            <label for="password3">Unesite staru lozinku za potvrdu</label>
                         </div>
                     </div>
 
