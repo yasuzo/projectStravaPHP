@@ -104,6 +104,7 @@ img.navbar-logo /* Navbar logo image */
 }
 
 .highlight-color,
+table.ranking-table > tbody > tr.logged-user-rank, /* Highlight logged user on ranking table */
 nav /* Navbar */
 {
     background-color: var(--light-color);
