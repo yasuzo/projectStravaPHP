@@ -212,3 +212,12 @@ div#admin-settings > div.row > ul /* Admin settings sections */
     padding-bottom: 1.5em;
 }
 
+@media only screen and (max-width: 992px){
+    nav#nav-other > div.nav-wrapper > a.brand-logo /* Logo on navbar other */
+    {
+        left: 0;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
