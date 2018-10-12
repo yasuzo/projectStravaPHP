@@ -168,7 +168,7 @@ div.welcome-page  h4 /* headings on welcome page */
 .login-card{
     text-align: center;
     background-color: var(--light-color);
-    margin-top: 3em;
+    margin: 3em auto;
     padding: 1em;
 }
 
