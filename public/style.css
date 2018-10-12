@@ -207,3 +207,8 @@ form#update_organization > div > div /* Organization settings form */
     margin-left: 0;
 }
 
+div#admin-settings > div.row > ul /* Admin settings sections */
+{
+    padding-bottom: 1.5em;
+}
+
