@@ -11,7 +11,7 @@ use Http\Request;
 use ResourceNotFoundException;
 
 /**
- * Used to show ranking of organizations to a user
+ * Used to show ranking of users in organizations
  */
 class ShowUserIndex implements Controller{
     private $templatingEngine;
@@ -42,19 +42,18 @@ class ShowUserIndex implements Controller{
         if(empty($organizations) === true){
             $chosenOrganization = false;
         }else{
+            // User is not a member of an organization and organization is not given in GET
             if($chosenOrganization_id === false){
-                $chosenOrganization = $this->organizationRepository->findById($organizations[0]['id']);
+                $chosenOrganization_id = $organizations[0]['id'];
             }
-            
-            if($chosenOrganization_id !== false){
-                try{
-                    $chosenOrganization = $this->organizationRepository->findById($chosenOrganization_id);
-    
-                    $usersByCount = $this->userRepository->findWithCountedActivities($chosenOrganization->id());
-                    $usersByDistance = $this->userRepository->findWithActivitiesDistance($chosenOrganization->id());
-                }catch(ResourceNotFoundException $e){
-                    return new RedirectResponse('?controller=index');
-                }
+
+            try{
+                $chosenOrganization = $this->organizationRepository->findById($chosenOrganization_id);
+
+                $usersByCount = $this->userRepository->findWithCountedActivities($chosenOrganization->id());
+                $usersByDistance = $this->userRepository->findWithActivitiesDistance($chosenOrganization->id());
+            }catch(ResourceNotFoundException $e){
+                return new RedirectResponse('?controller=index');
             }
         }
         

@@ -218,7 +218,7 @@ SQL;
         left join activities on users.id=activities.user_id
         where users.organization_id=:organization_id and bans.id is null
         group by users.id
-        order by count DESC;
+        order by count DESC, users.username;
 SQL;
         $query = $this->db->prepare($query);
         $query->execute([':organization_id' => $organization_id]);
@@ -240,7 +240,7 @@ SQL;
         left join activities on users.id=activities.user_id
         where users.organization_id=:organization_id and bans.id is null
         group by users.id
-        order by distance DESC;
+        order by distance DESC, users.username;
 SQL;
         $query = $this->db->prepare($query);
         $query->execute([':organization_id' => $organization_id]);

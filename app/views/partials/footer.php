@@ -12,7 +12,7 @@
     </div>
     <div class="footer-copyright">
             <div class="container accent">
-            Copyright © 2018 yasuzo
+            © 2018 Copyright yasuzo
             </div>
     </div>
 </footer>
