@@ -10,7 +10,7 @@
     <!-- Orgaznization picker -->
     <ul id="organization-pick" class="dropdown-content content-text">
         <?php foreach($organizations as $org): ?>
-            <li><a href="?controller=index&organization=<?= safe($org['id']); ?>" class="truncate"><?= safe($org['name']); ?></a></li>
+            <li><a href="?controller=index&organization=<?= safe($org['id']); ?>"><?= safe($org['name']); ?></a></li>
         <?php endforeach; ?>
     </ul>
     <a class="btn dropdown-trigger button-safe" href="#!" data-target="organization-pick"><?= safe($chosenOrganization->name()); ?><i class="material-icons right">arrow_drop_down</i></a>
