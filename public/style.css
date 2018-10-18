@@ -48,6 +48,12 @@ main {
     table-layout: fixed;
 }
 
+.activity table > tbody > tr td /* Height of activity stats on user's profile to be equal to activity card heading */
+{
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
 .activity td:nth-child(2) /* second stat in an activity card */
 {
     border-width: 0 0 0 1px;
