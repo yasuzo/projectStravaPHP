@@ -49,13 +49,13 @@
                     <?php if($user->id() === $usr['id']): ?>
                     <tr class="logged-user-rank">
                         <td><?= $i++; ?></td>
-                        <td><?= safe($usr['username']); ?></td>
+                        <td class="truncate"><?= safe($usr['username']); ?></td>
                         <td><?= safe($usr['distance'] /1000); ?></td>
                     </tr>
                     <?php else: ?>
                     <tr>
                         <td><?= $i++; ?></td>
-                        <td><?= safe($usr['username']); ?></td>
+                        <td class="truncate"><?= safe($usr['username']); ?></td>
                         <td><?= safe($usr['distance'] / 1000); ?></td>
                     </tr>
                     <?php endif; ?>
@@ -88,13 +88,13 @@
                     <?php if($user->id() === $usr['id']): ?>
                     <tr class="logged-user-rank">
                         <td><?= $i++; ?></td>
-                        <td><?= safe($usr['username']); ?></td>
+                        <td class="truncate"><?= safe($usr['username']); ?></td>
                         <td><?= safe($usr['count']); ?></td>
                     </tr>
                     <?php else: ?>
                     <tr>
                         <td><?= $i++; ?></td>
-                        <td><?= safe($usr['username']); ?></td>
+                        <td class="truncate"><?= safe($usr['username']); ?></td>
                         <td><?= safe($usr['count']); ?></td>
                     </tr>
                     <?php endif; ?>
