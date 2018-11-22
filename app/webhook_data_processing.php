@@ -80,7 +80,18 @@ function createActivity($owner_id, $object_id){
             $distance = Point::distance($point, $orgPoint);
             if($distance < 100){
                 echo "Distance from organization is less than 100m! - $distance m\n";
-                $organization_id = $org->id();
+
+                // Checks if a user has already recorded one commute to the organization today
+                $oneCommuteAlreadyRecorded = $activityRepository->countNewerThanFromUser(date("Y-m-d"), $user) > 0 ? true : false;
+
+                // If a commute is already recorded today, this commute will not be counted as commute to organization
+                if($oneCommuteAlreadyRecorded !== true){
+                    $organization_id = $org->id();
+                }else{
+                    echo "One commute is already recorded today!\n";
+                    $organization_id = null;
+                }
+
             }else{
                 echo "Distance from organization is greater than 100m! - $distance m\n";
                 $organization_id = null;

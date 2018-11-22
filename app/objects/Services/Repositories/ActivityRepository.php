@@ -2,7 +2,7 @@
 
 namespace Services\Repositories;
 
-use Models\{Activity, Point};
+use Models\{Activity, Point, User};
 use ResourceNotFoundException;
 use DuplicateEntryException;
 
@@ -12,6 +12,24 @@ class ActivityRepository extends Repository{
         parent::__construct($db);
     }
 
+    /**
+     * Returns number of commutes a user has done to the organization since given date
+     * 
+     * If organization is not selected, this will return 0.
+     *
+     * @param string $date
+     * @param integer $id User's id
+     * @return integer
+     */
+    public function countNewerThanFromUser(string $date, User $user): int{
+        $query = <<<SQL
+        SELECT count(id) from activities
+        where ended_at>:date and user_id=:id and organization_id is not null and organization_id=:organization_id;
+SQL;
+        $query = $this->db->prepare($query);
+        $query->execute(['date' => $date, ':id' => $user->id(), ':organization_id' => $user->organizationId()]);
+        return $query->fetchColum() ?: 0;
+    }
 
     /**
      * Returns all activities done by user with id passed as a parameter
