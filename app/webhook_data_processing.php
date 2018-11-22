@@ -84,7 +84,7 @@ function createActivity($owner_id, $object_id){
                 // Checks if a user has already recorded one commute to the organization today
                 $oneCommuteAlreadyRecorded = $activityRepository->countNewerThanFromUser(date("Y-m-d"), $user) > 0 ? true : false;
 
-                // If a commute is already recorded today, this commute will not be counted as commute to organization
+                // If a commute has already been recorded today, this commute will not be counted as commute to organization
                 if($oneCommuteAlreadyRecorded !== true){
                     $organization_id = $org->id();
                 }else{
