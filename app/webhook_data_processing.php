@@ -57,9 +57,13 @@ function createActivity($owner_id, $object_id){
         return;
     }
 
-    if($response['average_speed'] === null || $response['average_speed'] < 3 && $response['average_speed'] > 30){
+    if($response['average_speed'] === null || $response['average_speed'] < 3 || $response['average_speed'] > 30){
         $speed = $response['average_speed'] ?? "NULL";
         echo "Average speed is either null or is not in [3, 30] km/h interval! - Speed: $speed\n";
+        return;
+    }
+    if($response['elapsed_time'] / 3600 > 15){
+        echo "Elapsed time is too long! -> this ride will be ignored.\n";
         return;
     }
 
