@@ -28,7 +28,7 @@ class ActivityRepository extends Repository{
 SQL;
         $query = $this->db->prepare($query);
         $query->execute(['date' => $date, ':id' => $user->id(), ':organization_id' => $user->organizationId()]);
-        return $query->fetchColum() ?: 0;
+        return $query->fetchColumn() ?: 0;
     }
 
     /**

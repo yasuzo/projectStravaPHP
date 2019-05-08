@@ -62,7 +62,9 @@ function createActivity($owner_id, $object_id){
         echo "Average speed is either null or is not in [3, 30] km/h interval! - Speed: $speed\n";
         return;
     }
-    if($response['elapsed_time'] / 3600 > 15){
+
+    // TODO: Refactor to use constants
+    if($response['elapsed_time'] / 3600 > 2){
         echo "Elapsed time is too long! -> this ride will be ignored.\n";
         return;
     }
@@ -182,10 +184,8 @@ foreach($events as $event){
         $sessionRepository->deleteByUserIdAndType($user->id(), 'user');
 
     }else if($aspect_type === 'create' && $object_type === 'activity'){
-
         echo "Request to create an activity!\n---creating---\nObject id: " . $object_id . "\n";
         createActivity($owner_id, $object_id);
-
     }
 
     $webhookEventRepository->deleteById($event['id']);
